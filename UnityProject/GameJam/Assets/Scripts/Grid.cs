@@ -6,13 +6,11 @@ public class Grid : MonoBehaviour
 {
     public static string[,] grid;
     public static string[,] tiles;
+
     public static int gridWidth { get { return 10; } }
     public static int gridHeight { get { return 20; } }
 
-    public int cellWidth = 32;
-    public int cellHight = 32;
-
-    Vector2 position;
+    Vector2 position;                                   //positie van de grid zelf
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +19,7 @@ public class Grid : MonoBehaviour
         grid = new string[gridWidth, gridHeight];
     }
 
-    public bool isOccupied(int x, int y)
+   /* public bool isOccupied(int x, int y)
     {
         if (grid[x, y] != null)                     // 'null' wordt nog vervangen door 't lege vakje wat wordt afgelezen uit de tekstbestanden van ieder object
         {
@@ -35,5 +33,5 @@ public class Grid : MonoBehaviour
     void Update()
     {
         isOccupied(gridWidth, gridHeight);
-    }
+    }*/
 }
