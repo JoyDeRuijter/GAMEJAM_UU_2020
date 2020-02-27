@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         //if(isMoving == false)
         { 
@@ -55,5 +55,5 @@ public class Player : MonoBehaviour
                 Debug.Log("Test");
             }
         }
-    }
+    }*/
 }
