@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Grid.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Tile.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

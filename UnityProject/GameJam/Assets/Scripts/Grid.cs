@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Grid : MonoBehaviour
 {
-    public string[,] grid;
+    public static string[,] grid;
+    public static string[,] tiles;
     public static int gridWidth { get { return 10; } }
     public static int gridHeight { get { return 20; } }
 
@@ -33,6 +34,6 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        isOccupied(gridWidth, gridHeight);
     }
 }
