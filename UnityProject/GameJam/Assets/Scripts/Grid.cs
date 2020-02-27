@@ -19,7 +19,7 @@ public class Grid : MonoBehaviour
         grid = new string[gridWidth, gridHeight];
     }
 
-   /* public bool isOccupied(int x, int y)
+    public bool isOccupied(int x, int y)             //moet aangeroepen worden op t moment dat iets zich wil verplaatsen. De 'targetposition' zijn dan de meegegeven x en y waarden die de methode nodig heeft
     {
         if (grid[x, y] != null)                     // 'null' wordt nog vervangen door 't lege vakje wat wordt afgelezen uit de tekstbestanden van ieder object
         {
@@ -32,6 +32,6 @@ public class Grid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isOccupied(gridWidth, gridHeight);
-    }*/
+
+    }
 }
