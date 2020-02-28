@@ -17,7 +17,7 @@ public class Tile : MonoBehaviour
 
     void Update()
     {
-        this.transform.position = new Vector2(cellWidth * PosX, cellHeight * PosY);        //In tetris bewogen we de tetromino ook niet steeds in de grid. We veranderen steeds te vector, en om vervolgens de collision te checken gebruiken we die vector    
+        this.transform.position = new Vector3(cellWidth * PosX, cellHeight * PosY);        //In tetris bewogen we de tetromino ook niet steeds in de grid. We veranderen steeds te vector, en om vervolgens de collision te checken gebruiken we die vector    
         
     }
 }
