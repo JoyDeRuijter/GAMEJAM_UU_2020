@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     {
         tile = this.GetComponent<Tile>();
     }
-
+     
     // Update is called once per frame
     void Update()
     { 
