@@ -25,7 +25,8 @@ public class Arrows : MonoBehaviour
 
     public void CreateArrows()
     {
-        Number = RandomNumber(0, 1);
+        //iets met een timer of na ieder nummer wordt Number = 3 zodat dan even allebei de pijlen op false gaan
+        Number = RandomNumber(0, 2);
         if (Number == 0)
         {
             isLeft = true;
@@ -36,7 +37,16 @@ public class Arrows : MonoBehaviour
             isLeft = false;
             isRight = true;
         }
-
+        else if (Number == 2)
+        {
+            isLeft = true;
+            isRight = true;
+        }
+        else if (Number == 3)
+        {
+            isLeft = false;
+            isRight = false;
+        }
         if (isLeft == true)
         {
             GameObject arrowClone = Instantiate(arrow, new Vector2((float)-2, (float)-0.5), Quaternion.identity);
