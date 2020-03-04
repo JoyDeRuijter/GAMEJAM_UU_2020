@@ -4,20 +4,55 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    //public float cellWidth = 1.56574255228F;                      //vg na de re-scale nu niet meer nodig
-    //public float cellHeight = 1.56574255228F;
-
     public int PosX;
     public int PosY;
 
+    private Grid grid;
+    
+    public int tileID;
+    string TileID;
+
     void Start()
     {
-
-    }
-
-    void Update()
-    {
-        //this.transform.position = new Vector3(cellWidth * PosX, cellHeight * PosY);        //In tetris bewogen we de tetromino ook niet steeds in de grid. We veranderen steeds te vector, en om vervolgens de collision te checken gebruiken we die vector    
+        grid = FindObjectOfType<Grid>();
+        
         
     }
+
+    
+    
+    void Update()
+    {
+        identifyTile();                //expensive. Could this be moved elsewhere? Perhaps after movement, and/or during initialization
+    }
+
+    void identifyTile()
+    {
+        switch (tileID)
+        {
+            case 0:            //when the id is '0' (thus, a ground tile), don't give it a TileID.
+                break;
+            case 1:
+                TileID = "player";
+                break;
+            case 2:
+                TileID = "npc";
+                break;
+            case 4:
+                TileID = "obj";
+                break;
+            case 5:
+                TileID = "wall";
+                break;
+            case 6:
+                TileID = "door";
+                break;
+            default:
+                break;
+        }
+        grid.IdentifyTile(PosX, PosY, TileID);
+    }
+    
+    
+    
 }

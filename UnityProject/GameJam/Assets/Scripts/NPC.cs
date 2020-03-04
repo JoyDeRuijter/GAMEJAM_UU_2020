@@ -9,6 +9,12 @@ public class NPC : MonoBehaviour
 
     Character npc;
     public Tile npcTile;
+    
+    int StartX;
+    int StartY;
+    public int roamRange;
+
+    public int NPC_ID;
 
     int moveTimer;
    
@@ -16,7 +22,13 @@ public class NPC : MonoBehaviour
     {
         npc = this.GetComponent<Character>();
         npcTile = GetComponent<Tile>();
-        moveTimer = 1200;
+
+        StartX = npcTile.PosX;
+        StartY = npcTile.PosY;
+        
+        //npcTile.tileID = 2;
+        
+        moveTimer = Random.Range(300,600);
     }
 
     void Update()
@@ -25,7 +37,7 @@ public class NPC : MonoBehaviour
         if (moveTimer == 0)
         {
             RandomMovement();
-            moveTimer = 1200;
+            moveTimer = Random.Range(300,600);
         }
     }
 
@@ -39,25 +51,36 @@ public class NPC : MonoBehaviour
         //TO DO:    Add a range for the NPCs to roam in;    Add alternative movement, in case the random direction is occupied/invalid
         if (npc.isMoving == false)
         {
-            int caseDirection = Random.Range(0,3);
+            int caseDirection = Random.Range(0,3);        //0=down, 1=up, 2=left, 3=right
 
             npc.isMoving = true;
             switch (caseDirection)
             {
                 case 0:
-                    npc.MoveDown();
+                    if (npcTile.PosY + (roamRange - 1) >= StartY)
+                        npc.MoveDown();
+                    else
+                        RandomMovement();            //Maybe change their direction if they can't move somewhere instead.. or randomize it between both
                     break;
                 case 1:
-                    npc.MoveUp();
+                    if (npcTile.PosY - (roamRange - 1) <= StartY)
+                        npc.MoveUp();
+                    else
+                        RandomMovement();
                     break;
                 case 2:
-                    npc.MoveLeft();
+                    if (npcTile.PosX + (roamRange - 1) >= StartX)
+                        npc.MoveLeft();
+                    else
+                        RandomMovement();
                     break;
                 case 3:
-                    npc.MoveRight();
+                    if (npcTile.PosX - (roamRange - 1) <= StartY)
+                        npc.MoveRight();
+                    else
+                        RandomMovement();
                     break;
                 default:
-                    npc.isMoving = false;
                     break;
             }
         }

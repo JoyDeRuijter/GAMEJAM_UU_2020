@@ -1,16 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
     public static string[,] grid;
-    public static string[,] tiles;
+    //public static string[,] tiles;
 
-    public static int gridWidth { get { return 10; } }
-    public static int gridHeight { get { return 20; } }
+    public static int gridWidth
+    {
+        get { return 9; }
+    }
 
-    Vector2 position;                                   //positie van de grid zelf
+    public static int gridHeight
+    {
+        get { return 9; }
+    }
+
+    Vector2 position; //positie van de grid zelf
 
     // Start is called before the first frame update
     void Start()
@@ -19,17 +27,21 @@ public class Grid : MonoBehaviour
         grid = new string[gridWidth, gridHeight];
     }
 
-    public bool isOccupied(int x, int y)             //moet aangeroepen worden op t moment dat iets zich wil verplaatsen. De 'targetposition' zijn dan de meegegeven x en y waarden die de methode nodig heeft
+    public void IdentifyTile(int x, int y, string id)             //moet aangeroepen worden op t moment dat iets zich wil verplaatsen. De 'targetposition' zijn dan de meegegeven x en y waarden die de methode nodig heeft
     {
-        if (grid[x, y] != null)                     // 'null' wordt nog vervangen door 't lege vakje wat wordt afgelezen uit de tekstbestanden van ieder object
-        {
-            return true;
-        }
-        else
-            return false;
+        grid[x, y] = id;                
+        
     }
 
-    // Update is called once per frame
+    public bool isOccupied(int x, int y)
+    {
+        if (grid[x, y] == null)            //if the requested tile is an empty floor tile, it is 'unoccupied'
+            return false;
+        else
+            return true;
+    }
+
+// Update is called once per frame
     void Update()
     {
 

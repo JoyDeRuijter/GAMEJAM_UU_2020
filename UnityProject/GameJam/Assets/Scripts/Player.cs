@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
         character = this.GetComponent<Character>();
         tile = GetComponent<Tile>();
         npc = FindObjectOfType<NPC>();
+        
+        tile.tileID = 2;
     }
 
     void Update()

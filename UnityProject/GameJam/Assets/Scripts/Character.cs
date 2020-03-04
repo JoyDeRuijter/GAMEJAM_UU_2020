@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     public int Direction;
 
     Tile tile;
+    Grid grid;
 
     public void Start()
     {
@@ -20,6 +21,7 @@ public class Character : MonoBehaviour
     public void Generate()
     {
         tile = this.GetComponent<Tile>();
+        grid = FindObjectOfType<Grid>();
     }
 
     void Update()
@@ -30,26 +32,29 @@ public class Character : MonoBehaviour
 
     public void MoveDown()
     {
-        tile.PosY--;
+        if(tile.PosY > 0)
+            tile.PosY--;
         isMoving = false;
         Direction = 0;
     }
     public void MoveUp()
-    {   
+    {   if(tile.PosY + 1 < Grid.gridHeight)
+            tile.PosY++;
         isMoving = false;
-        tile.PosY++;
         Direction = 1;
     }
     public void MoveLeft()
     {
+        if(tile.PosX > 0)
+            tile.PosX--;
         isMoving = false;
-        tile.PosX--;
         Direction = 2;
     }
     public void MoveRight()
     {
+        if(tile.PosX + 1 < Grid.gridWidth)
+            tile.PosX++;
         isMoving = false;
-        tile.PosX++;
         Direction = 3;
     }
 }
