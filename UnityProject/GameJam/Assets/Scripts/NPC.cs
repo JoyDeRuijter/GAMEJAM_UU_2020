@@ -49,14 +49,14 @@ public class NPC : MonoBehaviour
         //TO DO:    Add a range for the NPCs to roam in;    Add alternative movement, in case the random direction is occupied/invalid
         if (npc.isMoving == false)
         {
-            int caseDirection = Random.Range(0,3);        //0=down, 1=up, 2=left, 3=right
+            int caseDirection = Random.Range(0,3);        // Provides random movement for the NPC       0=down, 1=up, 2=left, 3=right
 
             npc.isMoving = true;
             switch (caseDirection)
             {
                 case 0:
-                    if (npc.currentPosition.Y + (roamRange - 1) >= StartY)
-                        npc.MoveDown();
+                    if (npc.currentPosition.Y + (roamRange - 1) >= StartY)        //If the NPC is about to exit their roaming area, do NOT move
+                        npc.MoveDown();                                                    //<Expand on this with the targetPosition later..>
                     else
                         RandomMovement();            //Maybe change their direction if they can't move somewhere instead.. or randomize it between both
                     break;
