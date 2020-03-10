@@ -67,19 +67,19 @@ public class Player : MonoBehaviour
             switch (character.Direction)
             {
                 case 0:
-                    if (tile.PosX == npc.npcTile.PosX && tile.PosY - 1 == npc.npcTile.PosY)
+                    if (character.currentPosition.X == npc.npc.currentPosition.X && character.currentPosition.Y - 1 == npc.npc.currentPosition.Y)
                         npc.Interacted();
                     break;
                 case 1:
-                    if (tile.PosX == npc.npcTile.PosX && tile.PosY + 1 == npc.npcTile.PosY)
+                    if (character.currentPosition.X == npc.npc.currentPosition.X && character.currentPosition.Y + 1 == npc.npc.currentPosition.Y)
                         npc.Interacted();
                     break;
                 case 2:
-                    if (tile.PosX - 1 == npc.npcTile.PosX && tile.PosY == npc.npcTile.PosY)
+                    if (character.currentPosition.X - 1 == npc.npc.currentPosition.X && character.currentPosition.Y == npc.npc.currentPosition.Y)
                         npc.Interacted();
                     break;
                 case 3:
-                    if (tile.PosX + 1 == npc.npcTile.PosX && tile.PosY == npc.npcTile.PosY)
+                    if (character.currentPosition.X + 1 == npc.npc.currentPosition.X && character.currentPosition.Y == npc.npc.currentPosition.Y)
                         npc.Interacted();
                     break;
                 default:

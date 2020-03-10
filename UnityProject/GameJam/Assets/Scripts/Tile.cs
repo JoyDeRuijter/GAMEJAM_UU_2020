@@ -4,29 +4,42 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public int PosX;
-    public int PosY;
-
-    private Grid grid;
+   private Grid grid;
     
     public int tileID;
     string TileID;
-
+    
     void Start()
     {
         grid = FindObjectOfType<Grid>();
-        
-        
     }
 
-    
+    public class Position
+    {
+        public int X;
+        public int Y;
+
+        public Position(int x, int y)            //Can add a 'depth' parameter here
+        {
+            this.X = X;
+            this.Y = Y;
+        }
+        public bool isValid(Grid grid)
+        {
+            
+            if (grid.isOccupied(X, Y) == false && X >= 0 && Y >= 0 && X <= Grid.gridWidth && Y <= Grid.gridHeight)
+                return true;
+            else
+                return false;
+        }
+    }
     
     void Update()
     {
-        identifyTile();                //expensive. Could this be moved elsewhere? Perhaps after movement, and/or during initialization
+        IdTile();                //expensive. Could this be moved elsewhere? Perhaps after movement, and/or during initialization
     }
 
-    void identifyTile()
+    void IdTile()
     {
         switch (tileID)
         {
@@ -50,7 +63,7 @@ public class Tile : MonoBehaviour
             default:
                 break;
         }
-        grid.IdentifyTile(PosX, PosY, TileID);
+        //grid.IdentifyTile(Position.Position().X, Position.Position.Y, TileID);
     }
     
     

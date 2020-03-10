@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
+
+    
     public static string[,] grid;
     //public static string[,] tiles;
 
@@ -40,6 +42,14 @@ public class Grid : MonoBehaviour
         else
             return true;
     }
+
+    /*public bool isValid(int x, int y)
+    {
+        if (isOccupied(x, y) == false && x >= 0 && y >= 0 && x <= gridWidth && y <= gridHeight)
+            return true;
+        else
+            return false;
+    }*/
 
 // Update is called once per frame
     void Update()

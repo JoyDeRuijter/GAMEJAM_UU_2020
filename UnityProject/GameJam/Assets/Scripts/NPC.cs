@@ -7,7 +7,7 @@ public class NPC : MonoBehaviour
     //Will handle interaction and random movement
     //Collision will be done elsewhere (and for all objects with collision)
 
-    Character npc;
+    public Character npc;
     public Tile npcTile;
     
     int StartX;
@@ -23,10 +23,8 @@ public class NPC : MonoBehaviour
         npc = this.GetComponent<Character>();
         npcTile = GetComponent<Tile>();
 
-        StartX = npcTile.PosX;
-        StartY = npcTile.PosY;
-        
-        //npcTile.tileID = 2;
+        StartX = npc.currentPosition.X;
+        StartY = npc.currentPosition.Y;
         
         moveTimer = Random.Range(300,600);
     }
@@ -57,25 +55,25 @@ public class NPC : MonoBehaviour
             switch (caseDirection)
             {
                 case 0:
-                    if (npcTile.PosY + (roamRange - 1) >= StartY)
+                    if (npc.currentPosition.Y + (roamRange - 1) >= StartY)
                         npc.MoveDown();
                     else
                         RandomMovement();            //Maybe change their direction if they can't move somewhere instead.. or randomize it between both
                     break;
                 case 1:
-                    if (npcTile.PosY - (roamRange - 1) <= StartY)
+                    if (npc.currentPosition.Y - (roamRange - 1) <= StartY)
                         npc.MoveUp();
                     else
                         RandomMovement();
                     break;
                 case 2:
-                    if (npcTile.PosX + (roamRange - 1) >= StartX)
+                    if (npc.currentPosition.X + (roamRange - 1) >= StartX)
                         npc.MoveLeft();
                     else
                         RandomMovement();
                     break;
                 case 3:
-                    if (npcTile.PosX - (roamRange - 1) <= StartY)
+                    if (npc.currentPosition.X - (roamRange - 1) <= StartY)
                         npc.MoveRight();
                     else
                         RandomMovement();
