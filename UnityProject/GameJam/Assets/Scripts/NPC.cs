@@ -20,13 +20,25 @@ public class NPC : MonoBehaviour
    
     void Start()
     {
+        
+        
         npc = this.GetComponent<Character>();
         npcTile = GetComponent<Tile>();
 
+        npc.startPosition = new Tile.Position(npc.StartX,npc.StartY);
+        npc.currentPosition = npc.startPosition;
+        npc.lastPosition = npc.currentPosition;
+        npc.targetPosition = npc.currentPosition;
+        
         StartX = npc.currentPosition.X;
         StartY = npc.currentPosition.Y;
         
         moveTimer = Random.Range(300,600);
+    }
+
+    void Generate()
+    {
+        
     }
 
     void Update()
@@ -37,6 +49,8 @@ public class NPC : MonoBehaviour
             RandomMovement();
             moveTimer = Random.Range(300,600);
         }
+        
+        npcTile.IdTile(npc.currentPosition.X, npc.currentPosition.Y, 2);
     }
 
     public void Interacted()

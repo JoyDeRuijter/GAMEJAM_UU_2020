@@ -32,7 +32,12 @@ public class Grid : MonoBehaviour
     public void IdentifyTile(int x, int y, string id)             //moet aangeroepen worden op t moment dat iets zich wil verplaatsen. De 'targetposition' zijn dan de meegegeven x en y waarden die de methode nodig heeft
     {
         grid[x, y] = id;                                    // The provided string-ID is written into the correct location in the grid.
-        
+        //Debug.Log(grid[x,y]);
+    }
+
+    public void ClearTile(int x, int y)
+    {
+        grid[x, y] = null;
     }
 
     public bool isOccupied(int x, int y)
@@ -42,14 +47,6 @@ public class Grid : MonoBehaviour
         else
             return true;
     }
-
-    /*public bool isValid(int x, int y)
-    {
-        if (isOccupied(x, y) == false && x >= 0 && y >= 0 && x <= gridWidth && y <= gridHeight)
-            return true;
-        else
-            return false;
-    }*/
 
 // Update is called once per frame
     void Update()

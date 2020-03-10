@@ -2,11 +2,13 @@
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rb;
+    //Rigidbody2D rb;
 
     Character character;
     Tile tile;
@@ -22,6 +24,12 @@ public class Player : MonoBehaviour
         character = this.GetComponent<Character>();
         tile = GetComponent<Tile>();
         npc = FindObjectOfType<NPC>();
+    
+        
+        character.startPosition = new Tile.Position(character.StartX, character.StartY);
+        character.currentPosition = character.startPosition;
+        character.lastPosition = character.startPosition;
+        character.targetPosition = character.startPosition;
         
         tile.tileID = 2;
     }
@@ -29,6 +37,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleInput();
+        tile.IdTile(character.currentPosition.X, character.currentPosition.Y, 1);
     }
 
     void HandleInput()
