@@ -27,14 +27,8 @@ public class Character : MonoBehaviour
     {
         tile = this.GetComponent<Tile>();                // Each character has their own tile, with their own position. Therefor, tile must be a component
         grid = FindObjectOfType<Grid>();                // Grid is independant from the rest, but it's values and methods are still used
-        
-        Generate();
     }
-
-    public void Generate()
-    {
-    }
-
+    
     void Update()
     {
         this.transform.position = new Vector3(this.currentPosition.X + 0.5F, this.currentPosition.Y + 0.5F, this.currentPosition.Y);    // "ToWorldPosition"; ACTUAL position of characters is manipulated based on the position of their tile within the grid

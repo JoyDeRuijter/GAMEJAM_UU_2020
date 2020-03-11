@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-   private Grid _grid;
+    private Grid _grid;
     
     public int tileID;
     string TileID;

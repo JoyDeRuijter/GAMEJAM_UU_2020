@@ -28,13 +28,6 @@ public class Object : MonoBehaviour
         
         startPosition = new Tile.Position(StartX, StartY);
         currentPosition = startPosition;
-
-        Generate();
-    }
-
-    void Generate()
-    {
-        //tile.IdTile(currentPosition.X, currentPosition.Y, 4);
     }
 
     void Update()

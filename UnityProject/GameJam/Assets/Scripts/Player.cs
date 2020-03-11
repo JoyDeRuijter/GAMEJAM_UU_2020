@@ -8,8 +8,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //Rigidbody2D rb;
-
     Character character;
     Tile tile;
     NPC npc;
@@ -24,7 +22,6 @@ public class Player : MonoBehaviour
         character = this.GetComponent<Character>();
         tile = GetComponent<Tile>();
         npc = FindObjectOfType<NPC>();
-    
         
         character.startPosition = new Tile.Position(character.StartX, character.StartY);
         character.currentPosition = character.startPosition;
@@ -37,7 +34,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleInput();
-        tile.IdTile(character.currentPosition.X, character.currentPosition.Y, 1);
+        tile.IdTile(character.currentPosition.X, character.currentPosition.Y, 1);                //can this be moved elsewhere? Maybe after each move?
     }
 
     void HandleInput()
