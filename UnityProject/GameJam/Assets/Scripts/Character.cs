@@ -37,7 +37,7 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        this.transform.position = new Vector3(this.currentPosition.X, this.currentPosition.Y + 0.5F);    // "ToWorldPosition"; ACTUAL position of characters is manipulated based on the position of their tile within the grid
+        this.transform.position = new Vector3(this.currentPosition.X + 0.5F, this.currentPosition.Y + 0.5F, this.currentPosition.Y);    // "ToWorldPosition"; ACTUAL position of characters is manipulated based on the position of their tile within the grid
     }
 
 

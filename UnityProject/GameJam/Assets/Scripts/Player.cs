@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         character.lastPosition = character.startPosition;
         character.targetPosition = character.startPosition;
         
-        tile.tileID = 2;
+        tile.tileID = 1;
     }
 
     void Update()
