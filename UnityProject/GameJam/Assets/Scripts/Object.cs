@@ -8,36 +8,39 @@ public class Object : MonoBehaviour
     //Objects will be the same as NPCs, only they will not move and cannot always be interacted with.
     //Object IDs will make it possible to bind the correct 'dialogue', as well as (maybe?) sprite/animation to the object.
     
-    public Tile.Position startPosition;
-    public Tile.Position currentPosition;
-    
-    //public Tile objectTile;
-    
-    public int StartX;
-    public int StartY;
-
     public int OBJ_ID;
+    
+    private Tile tile;
+    private Entity entity;
 
-    Tile tile;
-    Grid grid;
+    private bool isGenerated;
    
     void Start()
     {
-        tile = this.GetComponent<Tile>();
-        grid = FindObjectOfType<Grid>();
+        tile = GetComponent<Tile>();
+        entity = GetComponent<Entity>();
+
+        Generate();
+    }
+
+    void Generate()
+    {
+        entity.startPosition = new Tile.Position(entity.StartX, entity.StartY);
+        entity.currentPosition = entity.startPosition;
         
-        startPosition = new Tile.Position(StartX, StartY);
-        currentPosition = startPosition;
+        this.transform.position = new Vector3(this.entity.currentPosition.X + 0.5F, this.entity.currentPosition.Y + 0.5F, this.entity.currentPosition.Y);
+
+        isGenerated = false;
     }
 
     void Update()
     {
-        if(OBJ_ID==0)
-            this.transform.position = new Vector3(this.currentPosition.X + 0.5F, this.currentPosition.Y + 0.5F, this.currentPosition.Y);
-        else if(OBJ_ID==1)
-            this.transform.position = new Vector3(this.currentPosition.X + 1.1F, this.currentPosition.Y + 0.5F, this.currentPosition.Y);
-        
-        tile.IdTile(currentPosition.X, currentPosition.Y, 4);
+       //this.transform.position = new Vector3(this.entity.currentPosition.X + 0.5F, this.entity.currentPosition.Y + 0.5F, this.entity.currentPosition.Y);
+       if(isGenerated==false)
+       {
+           isGenerated = true;
+           tile.IdTile(this.entity.currentPosition.X, this.entity.currentPosition.Y, 4);            //Het liefst doen we deze in de Generate-methode, maar dat leidt tot een NullReference error.
+       }
     }
 
     public void Interacted()

@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private Entity entity;
     Character character;
     Tile tile;
     NPC npc;
@@ -19,22 +20,17 @@ public class Player : MonoBehaviour
 
     public void Generate()
     {
-        character = this.GetComponent<Character>();
         tile = GetComponent<Tile>();
+        character = this.GetComponent<Character>();
+        entity = GetComponent<Entity>();
+        
         npc = FindObjectOfType<NPC>();
-        
-        character.startPosition = new Tile.Position(character.StartX, character.StartY);
-        character.currentPosition = character.startPosition;
-        character.lastPosition = character.startPosition;
-        character.targetPosition = character.startPosition;
-        
-        tile.tileID = 1;
     }
 
     void Update()
     {
         HandleInput();
-        tile.IdTile(character.currentPosition.X, character.currentPosition.Y, 1);                //can this be moved elsewhere? Maybe after each move?
+        tile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 1);                //can this be moved elsewhere? Maybe after each move?
     }
 
     void HandleInput()
@@ -44,22 +40,22 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.S))
             {
                 character.isMoving = true;
-                character.MoveDown();
+                character.Move(0);
             }
             if (Input.GetKeyDown(KeyCode.W))
             {
                 character.isMoving = true;
-                character.MoveUp();
+                character.Move(1);
             }
             if (Input.GetKeyDown(KeyCode.A))
             {
                 character.isMoving = true;
-                character.MoveLeft();
+                character.Move(2);
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
                 character.isMoving = true;
-                character.MoveRight();
+                character.Move(3);
             }
         }
 
@@ -73,19 +69,19 @@ public class Player : MonoBehaviour
             switch (character.Direction)
             {
                 case 0:
-                    if (character.currentPosition.X == npc.npc.currentPosition.X && character.currentPosition.Y - 1 == npc.npc.currentPosition.Y)
+                    if (entity.currentPosition.X == npc.entity.currentPosition.X && entity.currentPosition.Y - 1 == npc.entity.currentPosition.Y)
                         npc.Interacted();
                     break;
                 case 1:
-                    if (character.currentPosition.X == npc.npc.currentPosition.X && character.currentPosition.Y + 1 == npc.npc.currentPosition.Y)
+                    if (entity.currentPosition.X == npc.entity.currentPosition.X && entity.currentPosition.Y + 1 == npc.entity.currentPosition.Y)
                         npc.Interacted();
                     break;
                 case 2:
-                    if (character.currentPosition.X - 1 == npc.npc.currentPosition.X && character.currentPosition.Y == npc.npc.currentPosition.Y)
+                    if (entity.currentPosition.X - 1 == npc.entity.currentPosition.X && entity.currentPosition.Y == npc.entity.currentPosition.Y)
                         npc.Interacted();
                     break;
                 case 3:
-                    if (character.currentPosition.X + 1 == npc.npc.currentPosition.X && character.currentPosition.Y == npc.npc.currentPosition.Y)
+                    if (entity.currentPosition.X + 1 == npc.entity.currentPosition.X && entity.currentPosition.Y == npc.entity.currentPosition.Y)
                         npc.Interacted();
                     break;
                 default:

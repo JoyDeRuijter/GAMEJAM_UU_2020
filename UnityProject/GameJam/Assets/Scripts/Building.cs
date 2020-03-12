@@ -8,31 +8,42 @@ public class Building : MonoBehaviour
     //This script will determine the size of a bulding and the location of its entrances, if any.
     //Size could be done using arrays, and that array could be used to write about collision to the main grid.
     
-    int Building_ID;
+    public int Building_ID;
 
     private Vector2 position;
 
     private Tile tile;
-    private Object building;
-    private Grid grid;
+    private Entity entity;
+    
+    private bool isGenerated;
+
     
     void Start()
     {
+        entity = this.GetComponent<Entity>();
         tile = this.GetComponent<Tile>();
-        building = this.GetComponent<Object>();
-        grid = FindObjectOfType<Grid>();
-
+        
         Generate();
     }
 
     void Generate()
-    {
-        BuildingSize(Building_ID);
+    { 
+        entity.startPosition = new Tile.Position(entity.StartX, entity.StartY);
+        entity.currentPosition = entity.startPosition;
+        
+        this.transform.position = new Vector3(this.entity.currentPosition.X + 2.1F, this.entity.currentPosition.Y + 0.5F, this.entity.currentPosition.Y);
+
+        isGenerated = false;
     }
 
     void Update()
     {
-        
+        //this.transform.position = new Vector3(this.entity.currentPosition.X + 1.1F, this.entity.currentPosition.Y + 0.5F, this.entity.currentPosition.Y);
+        if (isGenerated == false)
+        {
+            isGenerated = true;
+            BuildingSize(Building_ID); //Het liefst doen we deze in de Generate-methode, maar dat leidt tot een NullReference error.
+        }
     }
 
     void BuildingSize(int ID)
@@ -59,19 +70,19 @@ public class Building : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {                                                        //Writes the identity of wall-tiles to the main grid
-                tile.IdTile(building.currentPosition.X + x, building.currentPosition.Y + y, 5);
+                tile.IdTile(entity.currentPosition.X + x, entity.currentPosition.Y + y, 5);
             }
         }
         switch (ID)
         {
             case 0:
-                tile.IdTile(building.currentPosition.X + 2, building.currentPosition.Y + 0, 6);
+                tile.IdTile(entity.currentPosition.X + 2, entity.currentPosition.Y + 0, 6);
                 break;
             case 1:
-                tile.IdTile(building.currentPosition.X + 3, building.currentPosition.Y + 4, 6);
+                tile.IdTile(entity.currentPosition.X + 3, entity.currentPosition.Y + 4, 6);
                 break;
             case 2:
-                tile.IdTile(building.currentPosition.X + 5, building.currentPosition.Y + 4, 6);
+                tile.IdTile(entity.currentPosition.X + 5, entity.currentPosition.Y + 4, 6);
                 break;
             default:
                 break;
