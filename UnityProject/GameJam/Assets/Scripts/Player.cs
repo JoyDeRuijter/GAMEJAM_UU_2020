@@ -14,6 +14,11 @@ public class Player : MonoBehaviour
     Tile tile;
     NPC npc;
 
+    public double coolDownTimer;
+    public double coolDown;
+    
+   
+
     public void Start()
     {
         Generate();
@@ -36,33 +41,48 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (coolDownTimer > 0)
+            coolDownTimer -= Time.deltaTime;
+
+        if (coolDownTimer < 0)
+            coolDownTimer = 0;
+
         HandleInput();
         tile.IdTile(character.currentPosition.X, character.currentPosition.Y, 1);
     }
 
     void HandleInput()
     {
+        coolDown = 0.1;
         if (character.isMoving == false)
         {
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S) && coolDownTimer == 0)
             {
-                character.isMoving = true;
-                character.MoveDown();
+                    character.isMoving = true;
+                    character.MoveDown();
+                    coolDownTimer = coolDown;
             }
-            if (Input.GetKeyDown(KeyCode.W))
+           // while (Input.GetKeyDown(KeyCode.S))
+           // {
+
+           // }
+            if (Input.GetKeyDown(KeyCode.W) && coolDownTimer == 0)
             {
-                character.isMoving = true;
-                character.MoveUp();
+                    character.isMoving = true;
+                    character.MoveUp();
+                    coolDownTimer = coolDown;
             }
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.A) && coolDownTimer == 0)
             {
-                character.isMoving = true;
-                character.MoveLeft();
+                    character.isMoving = true;
+                    character.MoveLeft();
+                    coolDownTimer = coolDown;
             }
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.D) && coolDownTimer == 0)
             {
                 character.isMoving = true;
                 character.MoveRight();
+                coolDownTimer = coolDown;
             }
         }
 
