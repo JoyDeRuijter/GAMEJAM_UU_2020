@@ -8,8 +8,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //Rigidbody2D rb;
-
+    private Entity entity;
     Character character;
     Tile tile;
     NPC npc;
@@ -26,17 +25,11 @@ public class Player : MonoBehaviour
 
     public void Generate()
     {
-        character = this.GetComponent<Character>();
         tile = GetComponent<Tile>();
+        character = this.GetComponent<Character>();
+        entity = GetComponent<Entity>();
+        
         npc = FindObjectOfType<NPC>();
-    
-        
-        character.startPosition = new Tile.Position(character.StartX, character.StartY);
-        character.currentPosition = character.startPosition;
-        character.lastPosition = character.startPosition;
-        character.targetPosition = character.startPosition;
-        
-        tile.tileID = 2;
     }
 
     void Update()
@@ -48,7 +41,7 @@ public class Player : MonoBehaviour
             coolDownTimer = 0;
 
         HandleInput();
-        tile.IdTile(character.currentPosition.X, character.currentPosition.Y, 1);
+        tile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 1);                //can this be moved elsewhere? Maybe after each move?
     }
 
     void HandleInput()
@@ -58,9 +51,8 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.S) && coolDownTimer == 0)
             {
-                    character.isMoving = true;
-                    character.MoveDown();
-                    coolDownTimer = coolDown;
+                character.isMoving = true;
+                character.Move(0);
             }
            // while (Input.GetKeyDown(KeyCode.S))
            // {
@@ -68,21 +60,18 @@ public class Player : MonoBehaviour
            // }
             if (Input.GetKeyDown(KeyCode.W) && coolDownTimer == 0)
             {
-                    character.isMoving = true;
-                    character.MoveUp();
-                    coolDownTimer = coolDown;
+                character.isMoving = true;
+                character.Move(1);
             }
             if (Input.GetKeyDown(KeyCode.A) && coolDownTimer == 0)
             {
-                    character.isMoving = true;
-                    character.MoveLeft();
-                    coolDownTimer = coolDown;
+                character.isMoving = true;
+                character.Move(2);
             }
             if (Input.GetKeyDown(KeyCode.D) && coolDownTimer == 0)
             {
                 character.isMoving = true;
-                character.MoveRight();
-                coolDownTimer = coolDown;
+                character.Move(3);
             }
         }
 
@@ -96,19 +85,19 @@ public class Player : MonoBehaviour
             switch (character.Direction)
             {
                 case 0:
-                    if (character.currentPosition.X == npc.npc.currentPosition.X && character.currentPosition.Y - 1 == npc.npc.currentPosition.Y)
+                    if (entity.currentPosition.X == npc.entity.currentPosition.X && entity.currentPosition.Y - 1 == npc.entity.currentPosition.Y)
                         npc.Interacted();
                     break;
                 case 1:
-                    if (character.currentPosition.X == npc.npc.currentPosition.X && character.currentPosition.Y + 1 == npc.npc.currentPosition.Y)
+                    if (entity.currentPosition.X == npc.entity.currentPosition.X && entity.currentPosition.Y + 1 == npc.entity.currentPosition.Y)
                         npc.Interacted();
                     break;
                 case 2:
-                    if (character.currentPosition.X - 1 == npc.npc.currentPosition.X && character.currentPosition.Y == npc.npc.currentPosition.Y)
+                    if (entity.currentPosition.X - 1 == npc.entity.currentPosition.X && entity.currentPosition.Y == npc.entity.currentPosition.Y)
                         npc.Interacted();
                     break;
                 case 3:
-                    if (character.currentPosition.X + 1 == npc.npc.currentPosition.X && character.currentPosition.Y == npc.npc.currentPosition.Y)
+                    if (entity.currentPosition.X + 1 == npc.entity.currentPosition.X && entity.currentPosition.Y == npc.entity.currentPosition.Y)
                         npc.Interacted();
                     break;
                 default:

@@ -12,7 +12,7 @@ public class Grid : MonoBehaviour
 
     public static int gridWidth
     {
-        get { return 9; }
+        get { return 31; }
     }
 
     public static int gridHeight
