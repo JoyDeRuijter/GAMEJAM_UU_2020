@@ -15,8 +15,9 @@ public class Player : MonoBehaviour
     Character character;
     NPC npc;
 
-    Tile.Position interactPosition;                //This could go to the character script instead, but NPCs currently have no use for this, thus it remains here.
-    private string interactTarget;
+    public Tile.Position interactPosition;                //This could go to the character script instead, but NPCs currently have no use for this, thus it remains here.
+    public string interactTarget;
+    public bool isInteracting;
     
     public double coolDownTimer;
     public double coolDown;
@@ -87,40 +88,8 @@ public class Player : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Interacting..");
-
-            switch (interactTarget)
-            {
-                case "npc":
-                    //    Ik wil nu weten WELKE NPC of WELK object er op de 'interactPosition' zit, zodat de juiste dialoog gevoerd kan worden
-                    Debug.Log("..With an NPC");
-                    break;
-                case "obj":
-                    Debug.Log("..With an object");
-                    break;
-                case "door":
-                    Debug.Log("..With a door");
-                    break;
-                default:
-                    break;
-            }
-            
-            
-            /*
-            if (grid.OfType(interactPosition.X, interactPosition.Y) == "npc")
-            {
-                Debug.Log("..With an NPC");
-            }
-            else if (grid.OfType(interactPosition.X, interactPosition.Y) == "obj")
-            {
-                Debug.Log("..With an object");
-            }
-            else if (grid.OfType(interactPosition.X, interactPosition.Y) == "door")
-            {
-                Debug.Log("..With a door");
-            }
-            */
-        }
+            isInteracting = true;
+        else
+            isInteracting = false;
     }
 }

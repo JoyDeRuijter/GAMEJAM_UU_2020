@@ -7,9 +7,11 @@ public class NPC : MonoBehaviour
     //Will handle interaction and random movement
     //Collision will be done elsewhere (and for all objects with collision)
 
-    public Character character;
     public Entity entity;
+    public Character character;
     public Tile npcTile;
+
+    public Player player;
     
     public int roamRange;
 
@@ -22,6 +24,8 @@ public class NPC : MonoBehaviour
         character = this.GetComponent<Character>();
         entity = GetComponent<Entity>();
         npcTile = GetComponent<Tile>();
+
+        player = FindObjectOfType<Player>();
 
         Generate();
     }
@@ -41,22 +45,40 @@ public class NPC : MonoBehaviour
         }
         
         npcTile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 2);
+
+        if (player.interactTarget == "npc" && player.isInteracting)
+            if (player.interactPosition.X == this.entity.currentPosition.X && player.interactPosition.Y == this.entity.currentPosition.Y)
+                Interacted(NPC_ID);
     }
 
-    public void Interacted()
+    public void Interacted(int id)
     {
-        Debug.Log("Well met, traveler!");
+       switch (id)
+            {
+                case 0:
+                    Debug.Log("Uh-oh, something went wrong.");
+                    break;
+                case 1:
+                    Debug.Log("Well met, traveler! I'm number 1!");
+                    break;
+                case 2:
+                    Debug.Log("Well met, traveler! I'm second-in-command!");
+                    break;
+                case 3:
+                    Debug.Log("Well met, traveler! Third's the charm!");
+                    break;
+                default:
+                    break;
+            }
     }
 
     void RandomMovement()
     {
-        //TO DO:    Add a range for the NPCs to roam in;    Add alternative movement, in case the random direction is occupied/invalid
         if (character.isMoving == false)
         {
             int caseDirection = Random.Range(0,3);        // Provides random movement for the NPC      
 
             character.isMoving = true;
-            
             
             switch (caseDirection)
             {
