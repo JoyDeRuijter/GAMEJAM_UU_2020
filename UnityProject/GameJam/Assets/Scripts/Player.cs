@@ -15,8 +15,6 @@ public class Player : MonoBehaviour
 
     public double coolDownTimer;
     public double coolDown;
-    
-   
 
     public void Start()
     {
@@ -46,32 +44,32 @@ public class Player : MonoBehaviour
 
     void HandleInput()
     {
-        coolDown = 0.1;
+        coolDown = 0.2;
         if (character.isMoving == false)
         {
-            if (Input.GetKeyDown(KeyCode.S) && coolDownTimer == 0)
+            if (Input.GetKey(KeyCode.S) && coolDownTimer == 0)
             {
                 character.isMoving = true;
                 character.Move(0);
+                coolDownTimer = coolDown;
             }
-           // while (Input.GetKeyDown(KeyCode.S))
-           // {
-
-           // }
-            if (Input.GetKeyDown(KeyCode.W) && coolDownTimer == 0)
+            if (Input.GetKey(KeyCode.W) && coolDownTimer == 0)
             {
                 character.isMoving = true;
                 character.Move(1);
+                coolDownTimer = coolDown;
             }
-            if (Input.GetKeyDown(KeyCode.A) && coolDownTimer == 0)
+            if (Input.GetKey(KeyCode.A) && coolDownTimer == 0)
             {
                 character.isMoving = true;
                 character.Move(2);
+                coolDownTimer = coolDown;
             }
-            if (Input.GetKeyDown(KeyCode.D) && coolDownTimer == 0)
+            if (Input.GetKey(KeyCode.D) && coolDownTimer == 0)
             {
                 character.isMoving = true;
                 character.Move(3);
+                coolDownTimer = coolDown;
             }
         }
 
