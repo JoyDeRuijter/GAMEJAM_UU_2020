@@ -48,6 +48,14 @@ public class Grid : MonoBehaviour
             return true;
     }
 
+    public string OfType(int x, int y)                //Method name W.I.P.
+    {
+        if (x >= 0 && x < gridWidth && y >= 0 && y < gridHeight)            //    The if-statement ensures no OutOfBounds exception occurs.
+            return grid[x, y];
+        else
+            return null;
+    }
+
 // Update is called once per frame
     void Update()
     {

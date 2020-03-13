@@ -26,8 +26,6 @@ public class Entity : MonoBehaviour
 
     void Update()
     {
-        /*this.transform.position = new Vector3(this.currentPosition.X + 0.5F, this.currentPosition.Y + 0.5F, this.currentPosition.Y);
         
-        tile.IdTile(currentPosition.X, currentPosition.Y, 4);*/
     }
 }

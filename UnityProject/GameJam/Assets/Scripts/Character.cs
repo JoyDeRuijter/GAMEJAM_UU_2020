@@ -37,72 +37,8 @@ public class Character : MonoBehaviour
         this.transform.position = new Vector3(this.entity.currentPosition.X + 0.5F, this.entity.currentPosition.Y + 0.5F, this.entity.currentPosition.Y);
         
         tile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 4);
-        
-    }
-
-    /*
-    public void MoveDown()
-    {
-        entity.lastPosition = entity.currentPosition;                // lastPosition becomes the currentPosition before the currentPosition is changed
-        
-        entity.targetPosition = new Tile.Position(entity.currentPosition.X, entity.currentPosition.Y - 1);                   // targetPosition changes based on the currentPosition, so we can check whether its possible to move there
-        
-        if(entity.targetPosition.isValid(grid))               // Is targetPosition possible?
-            entity.currentPosition = entity.targetPosition;                       // If yes, the currentPosition becomes the targetPosition
-        
-        grid.ClearTile(entity.lastPosition.X, entity.lastPosition.Y);
-        
-        isMoving = false;                              //isMoving is set back to false, because the move has been completed.    Will later be moved elsewhere, when gradual movement has been implemented.
-        Direction = 0;                                 // The direction of the character has been changed accordingly
-    }                                                  //Same actions down below.
-    
-    public void MoveUp()
-    {   
-        entity.lastPosition = entity.currentPosition;
-        
-        Tile.Position newPosition = new Tile.Position(entity.currentPosition.X, entity.currentPosition.Y + 1);
-        
-        entity.targetPosition = newPosition;
-        
-        if(entity.targetPosition.isValid(grid))
-            entity.currentPosition = entity.targetPosition;
-        
-        grid.ClearTile(entity.lastPosition.X, entity.lastPosition.Y);
-        
-        isMoving = false;
-        Direction = 1;
     }
     
-    public void MoveLeft()
-    {
-        entity.lastPosition = entity.currentPosition;
-
-        entity.targetPosition = new Tile.Position(entity.currentPosition.X - 1, entity.currentPosition.Y);
-        
-        if (entity.targetPosition.isValid(grid))
-            entity.currentPosition = entity.targetPosition;
-        
-        grid.ClearTile(entity.lastPosition.X, entity.lastPosition.Y);
-
-        isMoving = false;
-        Direction = 2;
-    }
-    
-    public void MoveRight()
-    {
-        entity.lastPosition = entity.currentPosition;
-        
-        entity.targetPosition = new Tile.Position(entity.currentPosition.X + 1, entity.currentPosition.Y);
-        
-        if (entity.targetPosition.isValid(grid))
-            entity.currentPosition = entity.targetPosition;
-        
-        grid.ClearTile(entity.lastPosition.X, entity.lastPosition.Y);
-        
-        isMoving = false;
-        Direction = 3;
-    }*/
-
     public void Move(int dir)
     {
         entity.lastPosition = entity.currentPosition;
@@ -113,10 +49,10 @@ public class Character : MonoBehaviour
                 entity.targetPosition = new Tile.Position(entity.currentPosition.X, entity.currentPosition.Y - 1);
                 break;
             case 1:
-                entity.targetPosition = new Tile.Position(entity.currentPosition.X, entity.currentPosition.Y + 1);
+                entity.targetPosition = new Tile.Position(entity.currentPosition.X - 1, entity.currentPosition.Y);
                 break;
             case 2:
-                entity.targetPosition = new Tile.Position(entity.currentPosition.X - 1, entity.currentPosition.Y);
+                entity.targetPosition = new Tile.Position(entity.currentPosition.X, entity.currentPosition.Y + 1);
                 break;
             case 3:
                 entity.targetPosition = new Tile.Position(entity.currentPosition.X + 1, entity.currentPosition.Y);
