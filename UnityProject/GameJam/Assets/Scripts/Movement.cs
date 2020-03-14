@@ -76,7 +76,7 @@ public class Movement : MonoBehaviour
     static float movementSpeedRandomizer()
     {
         float min = 0.8f;
-        float max = 1f;
+        float max = 5f;
         return Random.Range(min, max);
     }
 

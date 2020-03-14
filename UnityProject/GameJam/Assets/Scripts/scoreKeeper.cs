@@ -14,6 +14,6 @@ public class scoreKeeper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       //     GameObject.GetComponent<UnityEngine.UI.Text>().text = "Score: " + FindObjectOfType<ClickHandler>().score;
+       //    git GameObject.GetComponent<UnityEngine.UI.Text>().text = "Score: " + FindObjectOfType<ClickHandler>().score;
     }
 }
