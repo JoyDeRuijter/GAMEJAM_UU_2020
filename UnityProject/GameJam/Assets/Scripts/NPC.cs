@@ -7,6 +7,8 @@ public class NPC : MonoBehaviour
     //Will handle interaction and random movement
     //Collision will be done elsewhere (and for all objects with collision)
 
+    public DialogueController dialogue;
+    
     public Entity entity;
     public Character character;
     public Tile npcTile;
@@ -21,6 +23,8 @@ public class NPC : MonoBehaviour
 
     void Start()
     {
+        dialogue = FindObjectOfType<DialogueController>();
+        
         character = this.GetComponent<Character>();
         entity = GetComponent<Entity>();
         npcTile = GetComponent<Tile>();
@@ -51,25 +55,36 @@ public class NPC : MonoBehaviour
                 Interacted(NPC_ID);
     }
 
-    public void Interacted(int id)
+    public void Interacted(int id)                    //    TODO:    Make them face the player when interacted with
     {
-       switch (id)
-            {
-                case 0:
-                    Debug.Log("Uh-oh, something went wrong.");
-                    break;
-                case 1:
-                    Debug.Log("Well met, traveler! I'm number 1!");
-                    break;
-                case 2:
-                    Debug.Log("Well met, traveler! I'm second-in-command!");
-                    break;
-                case 3:
-                    Debug.Log("Well met, traveler! Third's the charm!");
-                    break;
-                default:
-                    break;
-            }
+        this.character.Direction = player.character.Direction + 2;
+        if (this.character.Direction > 3)                        //If the player looks up (dir=2), the npc will look down ((npc.dir=4)-4 = 0). 
+            this.character.Direction -= 4;
+        
+        dialogue.NPC(id);
+        
+        /*
+        switch (id)                        //not useful at the moment, but perhaps later when NPCs have more functionality than just being talked to.
+       {
+           case 0:
+               Debug.Log("Uh-oh, something went wrong.");
+               break;
+           case 1:
+               //Debug.Log("Well met, traveler! I'm number 1!");
+               dialogue.NPC(id);
+               break;
+           case 2:
+               //Debug.Log("Well met, traveler! I'm second-in-command!");
+               dialogue.NPC(id); 
+               break;
+           case 3: 
+               //Debug.Log("Well met, traveler! Third's the charm!");
+               dialogue.NPC(id);
+               break;
+           default: 
+               break;
+       }
+       */
     }
 
     void RandomMovement()

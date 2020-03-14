@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     Tile tile;
     
     Entity entity;
-    Character character;
+    public Character character;                    //    Making it public will allow the NPC script to use this to determine the player's direction, and adjust their own direction accordingly.
     NPC npc;
 
     public Tile.Position interactPosition;                //This could go to the character script instead, but NPCs currently have no use for this, thus it remains here.
