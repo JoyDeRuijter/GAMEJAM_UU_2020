@@ -7,6 +7,8 @@ using UnityEngine.AI;
 public class Character : MonoBehaviour
 {
     //gaat de methodes voor movement bevatten; deze kunnen in een later NPC script voor random-movement aangeroepen worden, en kunnen bij de 'handle-input' van 't Player script aangeroepen worden
+
+    public Animator animator;
     
     Tile tile;
     Grid grid;
@@ -36,21 +38,26 @@ public class Character : MonoBehaviour
     
     void Update()
     {
+        animator.SetInteger("Direction", Direction);
+
         if (!this.isMoving)
         {
             this.transform.position = new Vector3(this.entity.currentPosition.X + 0.5F,
-                this.entity.currentPosition.Y + 0.5F, this.entity.currentPosition.Y);
+                this.entity.currentPosition.Y, this.entity.currentPosition.Y);
+            animator.SetBool("Moving", false);
         }
         
         //TODO: Clean this up a little.. AFTER merge with NPC branch!!
         else if (this.isMoving)
         {
+            animator.SetBool("Moving", true);
+         
             this.transform.position = movingTowards;        //    The apparent position of the sprite will be updated with the movingPosition each tick.
 
             if (Direction == 0)
             {
                 movingTowards.y -= 0.02F;                    //    While the character is moving in a direction, the movingTowards will gradually grow or shrink.
-                if (movingTowards.y <= this.entity.currentPosition.Y + 0.5F)       //    if the movingTowards position has reached it's targetted position, movement will stop.
+                if (movingTowards.y <= this.entity.currentPosition.Y)       //    if the movingTowards position has reached it's targetted position, movement will stop.
                 {
                     isMoving = false;
                 }
@@ -66,7 +73,7 @@ public class Character : MonoBehaviour
             else if (Direction == 1)
             {
                 movingTowards.y += 0.02F;
-                if (movingTowards.y >= this.entity.currentPosition.Y + 0.5F)
+                if (movingTowards.y >= this.entity.currentPosition.Y)
                 {
                     isMoving = false;
                 }

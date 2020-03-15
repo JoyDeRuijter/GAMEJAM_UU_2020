@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
     void HandleInput()
     {
         coolDown = 0.2;
-        if (character.isMoving == false)
+        if (!character.isMoving)
         {
             if (Input.GetKey(KeyCode.S) && coolDownTimer == 0)
             {
