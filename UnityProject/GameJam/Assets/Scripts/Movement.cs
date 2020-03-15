@@ -24,13 +24,15 @@ public class Movement : MonoBehaviour
     private float minwidth = -71f;
     //game points
     public int points = 0;
-    
+    //animator
+    public Animator anim;
     
     // Start is called before the first frame update
     void Start()
     {
         position = transform.position;
         movementSpeed = movementSpeedRandomizer();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -56,11 +58,13 @@ public class Movement : MonoBehaviour
                 }
                 break;
             case "invisible right":
+                anim.SetTrigger("OutOfViewRight");
                 changeY();
                 movementSpeed = movementSpeedRandomizer();
                 state = "left";
                 break;
             case "invisible left":
+                anim.SetTrigger("OutOfViewLeft");
                 changeY();
                 movementSpeed = movementSpeedRandomizer();
                 state = "right";
@@ -95,7 +99,6 @@ public class Movement : MonoBehaviour
         transform.position = position;
         
     }
-    
 
     void moveLeft()
     {
