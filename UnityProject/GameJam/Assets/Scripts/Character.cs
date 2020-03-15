@@ -15,6 +15,8 @@ public class Character : MonoBehaviour
     public bool isMoving = false;                   // The player may not move again while it is still moving
     public int Direction;                           // The direction the character is facing.    Will later be used to choose the right sprite, to reflect this.
 
+    private Vector3 movingTowards;
+    
     public void Start()
     {
         tile = this.GetComponent<Tile>();                // Each character has their own tile, with their own position. Therefor, tile must be a component
@@ -34,77 +36,62 @@ public class Character : MonoBehaviour
     
     void Update()
     {
-        this.transform.position = new Vector3(this.entity.currentPosition.X + 0.5F, this.entity.currentPosition.Y + 0.5F, this.entity.currentPosition.Y);
+        if (!this.isMoving)
+        {
+            this.transform.position = new Vector3(this.entity.currentPosition.X + 0.5F,
+                this.entity.currentPosition.Y + 0.5F, this.entity.currentPosition.Y);
+        }
         
+        //TODO: Clean this up a little.. AFTER merge with NPC branch!!
+        else if (this.isMoving)
+        {
+            this.transform.position = movingTowards;        //    The apparent position of the sprite will be updated with the movingPosition each tick.
+
+            if (Direction == 0)
+            {
+                movingTowards.y -= 0.02F;                    //    While the character is moving in a direction, the movingTowards will gradually grow or shrink.
+                if (movingTowards.y <= this.entity.currentPosition.Y + 0.5F)       //    if the movingTowards position has reached it's targetted position, movement will stop.
+                {
+                    isMoving = false;
+                }
+            }
+            else if (Direction == 2)
+            {
+                movingTowards.x -= 0.02F;
+                if (movingTowards.x <= this.entity.currentPosition.X + 0.5F)
+                {
+                    isMoving = false;
+                }
+            }
+            else if (Direction == 1)
+            {
+                movingTowards.y += 0.02F;
+                if (movingTowards.y >= this.entity.currentPosition.Y + 0.5F)
+                {
+                    isMoving = false;
+                }
+            }
+            else if (Direction == 3)
+            {
+                movingTowards.x += 0.02F;
+                
+                if (movingTowards.x >= this.entity.currentPosition.X + 0.5F)
+                {
+                    isMoving = false;
+                }
+            }
+        }
+
         tile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 4);
         
     }
-
-    /*
-    public void MoveDown()
-    {
-        entity.lastPosition = entity.currentPosition;                // lastPosition becomes the currentPosition before the currentPosition is changed
-        
-        entity.targetPosition = new Tile.Position(entity.currentPosition.X, entity.currentPosition.Y - 1);                   // targetPosition changes based on the currentPosition, so we can check whether its possible to move there
-        
-        if(entity.targetPosition.isValid(grid))               // Is targetPosition possible?
-            entity.currentPosition = entity.targetPosition;                       // If yes, the currentPosition becomes the targetPosition
-        
-        grid.ClearTile(entity.lastPosition.X, entity.lastPosition.Y);
-        
-        isMoving = false;                              //isMoving is set back to false, because the move has been completed.    Will later be moved elsewhere, when gradual movement has been implemented.
-        Direction = 0;                                 // The direction of the character has been changed accordingly
-    }                                                  //Same actions down below.
     
-    public void MoveUp()
-    {   
-        entity.lastPosition = entity.currentPosition;
-        
-        Tile.Position newPosition = new Tile.Position(entity.currentPosition.X, entity.currentPosition.Y + 1);
-        
-        entity.targetPosition = newPosition;
-        
-        if(entity.targetPosition.isValid(grid))
-            entity.currentPosition = entity.targetPosition;
-        
-        grid.ClearTile(entity.lastPosition.X, entity.lastPosition.Y);
-        
-        isMoving = false;
-        Direction = 1;
-    }
-    
-    public void MoveLeft()
-    {
-        entity.lastPosition = entity.currentPosition;
-
-        entity.targetPosition = new Tile.Position(entity.currentPosition.X - 1, entity.currentPosition.Y);
-        
-        if (entity.targetPosition.isValid(grid))
-            entity.currentPosition = entity.targetPosition;
-        
-        grid.ClearTile(entity.lastPosition.X, entity.lastPosition.Y);
-
-        isMoving = false;
-        Direction = 2;
-    }
-    
-    public void MoveRight()
-    {
-        entity.lastPosition = entity.currentPosition;
-        
-        entity.targetPosition = new Tile.Position(entity.currentPosition.X + 1, entity.currentPosition.Y);
-        
-        if (entity.targetPosition.isValid(grid))
-            entity.currentPosition = entity.targetPosition;
-        
-        grid.ClearTile(entity.lastPosition.X, entity.lastPosition.Y);
-        
-        isMoving = false;
-        Direction = 3;
-    }*/
-
     public void Move(int dir)
     {
+        isMoving = true;
+        
+        movingTowards = transform.position;
+        
         entity.lastPosition = entity.currentPosition;
 
         switch (dir)
@@ -130,7 +117,7 @@ public class Character : MonoBehaviour
             
         grid.ClearTile(entity.lastPosition.X, entity.lastPosition.Y);
         
-        isMoving = false;
+        //isMoving = false;
         Direction = dir;
     }
 }

@@ -34,8 +34,7 @@ public class Player : MonoBehaviour
     {
         if (coolDownTimer > 0)
             coolDownTimer -= Time.deltaTime;
-
-        if (coolDownTimer < 0)
+        else if (coolDownTimer <= 0)
             coolDownTimer = 0;
 
         HandleInput();
@@ -44,30 +43,30 @@ public class Player : MonoBehaviour
 
     void HandleInput()
     {
-        coolDown = 0.07;
+        coolDown = 0.2;
         if (character.isMoving == false)
         {
             if (Input.GetKey(KeyCode.S) && coolDownTimer == 0)
             {
-                character.isMoving = true;
+                //character.isMoving = true;
                 character.Move(0);
                 coolDownTimer = coolDown;
             }
             if (Input.GetKey(KeyCode.W) && coolDownTimer == 0)
             {
-                character.isMoving = true;
+                //character.isMoving = true;
                 character.Move(1);
                 coolDownTimer = coolDown;
             }
             if (Input.GetKey(KeyCode.A) && coolDownTimer == 0)
             {
-                character.isMoving = true;
+                //character.isMoving = true;
                 character.Move(2);
                 coolDownTimer = coolDown;
             }
             if (Input.GetKey(KeyCode.D) && coolDownTimer == 0)
             {
-                character.isMoving = true;
+                //character.isMoving = true;
                 character.Move(3);
                 coolDownTimer = coolDown;
             }
