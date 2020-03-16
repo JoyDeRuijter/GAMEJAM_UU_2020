@@ -29,7 +29,7 @@ public class Grid : MonoBehaviour
         grid = new string[gridWidth, gridHeight];                    // An empty grid is created, with the correct dimensions
     }
 
-    public void IdentifyTile(int x, int y, string id)             //moet aangeroepen worden op t moment dat iets zich wil verplaatsen. De 'targetposition' zijn dan de meegegeven x en y waarden die de methode nodig heeft
+    public void WriteTile(int x, int y, string id)             //moet aangeroepen worden op t moment dat iets zich wil verplaatsen. De 'targetposition' zijn dan de meegegeven x en y waarden die de methode nodig heeft
     {
         grid[x, y] = id;                                    // The provided string-ID is written into the correct location in the grid.
         

@@ -64,25 +64,27 @@ public class Building : MonoBehaviour
         }
     }
 
+    
+    //    TODO: Make more variations based on the sprites we have
     void Build(int width, int height, int ID)
     {
         for(int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {                                                        //Writes the identity of wall-tiles to the main grid
-                tile.IdTile(entity.currentPosition.X + x, entity.currentPosition.Y + y, 5);
+                tile.IdTile(entity.currentPosition.X + x, entity.currentPosition.Y + y, 4);
             }
         }
         switch (ID)
         {
             case 0:
-                tile.IdTile(entity.currentPosition.X + 2, entity.currentPosition.Y + 0, 6);
+                tile.IdTile(entity.currentPosition.X + 2, entity.currentPosition.Y + 0, 5);
                 break;
             case 1:
-                tile.IdTile(entity.currentPosition.X + 3, entity.currentPosition.Y + 4, 6);
+                tile.IdTile(entity.currentPosition.X + 3, entity.currentPosition.Y + 4, 5);
                 break;
             case 2:
-                tile.IdTile(entity.currentPosition.X + 5, entity.currentPosition.Y + 4, 6);
+                tile.IdTile(entity.currentPosition.X + 5, entity.currentPosition.Y + 4, 5);
                 break;
             default:
                 break;

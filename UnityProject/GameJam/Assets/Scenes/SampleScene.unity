@@ -3188,7 +3188,7 @@ PrefabInstance:
     - target: {fileID: 7970941626048092479, guid: 8289ab05164a5d74c8fc1615c6ba9db1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7970941626048092479, guid: 8289ab05164a5d74c8fc1615c6ba9db1,
         type: 3}
@@ -3805,6 +3805,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Male3
       objectReference: {fileID: 0}
+    - target: {fileID: 6273834699092024145, guid: 1fe05be92026a66468e5c967dfa0f7b9,
+        type: 3}
+      propertyPath: roamRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6273834699092024146, guid: 1fe05be92026a66468e5c967dfa0f7b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4321,7 +4326,7 @@ PrefabInstance:
     - target: {fileID: 8193147281075161140, guid: ad7ba29959035d24f99c0c9fdedbab66,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8193147281075161140, guid: ad7ba29959035d24f99c0c9fdedbab66,
         type: 3}

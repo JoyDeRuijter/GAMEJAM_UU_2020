@@ -49,17 +49,24 @@ public class NPC : MonoBehaviour
         }
         
         npcTile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 2);
-
+        
         if (player.interactTarget == "npc" && player.isInteracting)
+        {
             if (player.interactPosition.X == this.entity.currentPosition.X && player.interactPosition.Y == this.entity.currentPosition.Y)
+            {
                 Interacted(NPC_ID);
+            }
+            
+        }
     }
 
-    public void Interacted(int id)                    //    TODO:    Make them face the player when interacted with
+    public void Interacted(int id)                    //    TODO:    Make them face the player when interacted with!!
     {
         this.character.Direction = player.character.Direction + 2;
-        if (this.character.Direction > 3)                        //If the player looks up (dir=2), the npc will look down ((npc.dir=4)-4 = 0). 
-            this.character.Direction -= 4;
+            if (this.character.Direction >= 4) //If the player looks up (dir=2), the npc will look down ((npc.dir=4)-4 = 0). 
+                this.character.Direction -= 4;
+            
+        moveTimer = Random.Range(600, 1200);
         
         dialogue.NPC(id);
         
@@ -89,11 +96,11 @@ public class NPC : MonoBehaviour
 
     void RandomMovement()
     {
+        //    TODO: Roamrange is kapot gegaan bij merge; even naar kijken!!
+        
         if (character.isMoving == false)
         {
             int caseDirection = Random.Range(0,3);        // Provides random movement for the NPC      
-
-            //character.isMoving = true;
             
             switch (caseDirection)
             {

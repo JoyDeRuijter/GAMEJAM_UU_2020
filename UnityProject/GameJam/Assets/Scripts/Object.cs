@@ -46,7 +46,7 @@ public class Object : MonoBehaviour
        if(isGenerated==false)
        {
            isGenerated = true;
-           tile.IdTile(this.entity.currentPosition.X, this.entity.currentPosition.Y, 4);            //Het liefst doen we deze in de Generate-methode, maar dat leidt tot een NullReference error.
+           tile.IdTile(this.entity.currentPosition.X, this.entity.currentPosition.Y, 3);            //Het liefst doen we deze in de Generate-methode, maar dat leidt tot een NullReference error.
        }
        
        if (player.interactTarget == "obj" && player.isInteracting)

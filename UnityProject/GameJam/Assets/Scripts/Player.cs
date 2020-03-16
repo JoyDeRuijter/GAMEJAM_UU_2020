@@ -53,10 +53,12 @@ public class Player : MonoBehaviour
             interactPosition = new Tile.Position(entity.currentPosition.X, entity.currentPosition.Y - 1 + character.Direction);    //If the direction is down, the target will be below. If the direction is up, the target will be above
         else
             interactPosition = new Tile.Position(entity.currentPosition.X - 2 + character.Direction, entity.currentPosition.Y);    //If the direction is left, the target will be left. If the direction is right, the target will be right.
+        
         interactTarget = grid.OfType(interactPosition.X, interactPosition.Y);
         
         HandleInput();
         tile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 1);
+        
     }
 
     void HandleInput()
@@ -91,7 +93,9 @@ public class Player : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
-            isInteracting = true;
+        {
+            isInteracting = true;  
+        }
         else
             isInteracting = false;
     }

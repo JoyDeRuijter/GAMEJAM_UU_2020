@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
         grid = FindObjectOfType<Grid>();                // Grid is independant from the rest, but it's values and methods are still used
         entity = GetComponent<Entity>();
         
-        movingSpeed = 0.08F;
+        movingSpeed = 0.02F;
         
         Generate();
     }
@@ -65,7 +65,7 @@ public class Character : MonoBehaviour
                     isMoving = false;
                 }
             }
-            else if (Direction == 2)
+            else if (Direction == 1)
             {
                 movingTowards.x -= movingSpeed;
                 if (movingTowards.x <= this.entity.currentPosition.X + 0.5F)
@@ -73,7 +73,7 @@ public class Character : MonoBehaviour
                     isMoving = false;
                 }
             }
-            else if (Direction == 1)
+            else if (Direction == 2)
             {
                 movingTowards.y += movingSpeed;
                 if (movingTowards.y >= this.entity.currentPosition.Y)
@@ -91,9 +91,6 @@ public class Character : MonoBehaviour
                 }
             }
         }
-
-        tile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 4);
-        
     }
     
     public void Move(int dir)
