@@ -59,12 +59,18 @@
      <Compile Include="Assets\Scripts\Building.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />
+     <Compile Include="Assets\Scripts\Controllers\DialogueController.cs" />
      <Compile Include="Assets\Scripts\Entity.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
      <Compile Include="Assets\Scripts\NPC.cs" />
      <Compile Include="Assets\Scripts\Object.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\Tile.cs" />
+     <None Include="Assets\Text\NPC\NPC_Dialogue2.txt" />
+     <None Include="Assets\Text\NPC\NPC_Dialogue3.txt" />
+     <None Include="Assets\Text\NPC\NPC_Dialogue0.txt" />
+     <None Include="Assets\Text\Object\Object_Description0.txt" />
+     <None Include="Assets\Text\NPC\NPC_Dialogue1.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

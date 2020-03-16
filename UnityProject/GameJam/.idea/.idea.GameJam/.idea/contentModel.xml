@@ -10,12 +10,26 @@
           <e p="Building.cs" t="Include" />
           <e p="CameraMovement.cs" t="Include" />
           <e p="Character.cs" t="Include" />
+          <e p="Controllers" t="Include">
+            <e p="DialogueController.cs" t="Include" />
+          </e>
           <e p="Entity.cs" t="Include" />
           <e p="Grid.cs" t="Include" />
           <e p="NPC.cs" t="Include" />
           <e p="Object.cs" t="Include" />
           <e p="Player.cs" t="Include" />
           <e p="Tile.cs" t="Include" />
+        </e>
+        <e p="Text" t="Include">
+          <e p="NPC" t="Include">
+            <e p="NPC_Dialogue0.txt" t="Include" />
+            <e p="NPC_Dialogue1.txt" t="Include" />
+            <e p="NPC_Dialogue2.txt" t="Include" />
+            <e p="NPC_Dialogue3.txt" t="Include" />
+          </e>
+          <e p="Object" t="Include">
+            <e p="Object_Description0.txt" t="Include" />
+          </e>
         </e>
       </e>
       <e p="GameJam.sln" t="IncludeFlat" />

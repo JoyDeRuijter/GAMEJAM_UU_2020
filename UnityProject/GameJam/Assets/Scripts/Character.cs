@@ -110,10 +110,10 @@ public class Character : MonoBehaviour
                 entity.targetPosition = new Tile.Position(entity.currentPosition.X, entity.currentPosition.Y - 1);
                 break;
             case 1:
-                entity.targetPosition = new Tile.Position(entity.currentPosition.X, entity.currentPosition.Y + 1);
+                entity.targetPosition = new Tile.Position(entity.currentPosition.X - 1, entity.currentPosition.Y);
                 break;
             case 2:
-                entity.targetPosition = new Tile.Position(entity.currentPosition.X - 1, entity.currentPosition.Y);
+                entity.targetPosition = new Tile.Position(entity.currentPosition.X, entity.currentPosition.Y + 1);
                 break;
             case 3:
                 entity.targetPosition = new Tile.Position(entity.currentPosition.X + 1, entity.currentPosition.Y);

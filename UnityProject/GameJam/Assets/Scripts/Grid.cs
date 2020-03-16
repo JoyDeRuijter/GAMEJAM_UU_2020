@@ -32,7 +32,7 @@ public class Grid : MonoBehaviour
     public void IdentifyTile(int x, int y, string id)             //moet aangeroepen worden op t moment dat iets zich wil verplaatsen. De 'targetposition' zijn dan de meegegeven x en y waarden die de methode nodig heeft
     {
         grid[x, y] = id;                                    // The provided string-ID is written into the correct location in the grid.
-        //Debug.Log(grid[x,y]);
+        
     }
 
     public void ClearTile(int x, int y)
@@ -46,6 +46,14 @@ public class Grid : MonoBehaviour
             return false;
         else
             return true;
+    }
+
+    public string OfType(int x, int y)                //Method name W.I.P.
+    {
+        if (x >= 0 && x < gridWidth && y >= 0 && y < gridHeight)            //    The if-statement ensures no OutOfBounds exception occurs.
+            return grid[x, y];
+        else
+            return null;
     }
 
 // Update is called once per frame

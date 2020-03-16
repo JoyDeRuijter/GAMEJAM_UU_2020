@@ -7,9 +7,13 @@ public class NPC : MonoBehaviour
     //Will handle interaction and random movement
     //Collision will be done elsewhere (and for all objects with collision)
 
-    public Character character;
+    public DialogueController dialogue;
+    
     public Entity entity;
+    public Character character;
     public Tile npcTile;
+
+    public Player player;
     
     public int roamRange;
 
@@ -19,9 +23,13 @@ public class NPC : MonoBehaviour
 
     void Start()
     {
+        dialogue = FindObjectOfType<DialogueController>();
+        
         character = this.GetComponent<Character>();
         entity = GetComponent<Entity>();
         npcTile = GetComponent<Tile>();
+
+        player = FindObjectOfType<Player>();
 
         Generate();
     }
@@ -41,45 +49,73 @@ public class NPC : MonoBehaviour
         }
         
         npcTile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 2);
+
+        if (player.interactTarget == "npc" && player.isInteracting)
+            if (player.interactPosition.X == this.entity.currentPosition.X && player.interactPosition.Y == this.entity.currentPosition.Y)
+                Interacted(NPC_ID);
     }
 
-    public void Interacted()
+    public void Interacted(int id)                    //    TODO:    Make them face the player when interacted with
     {
-        Debug.Log("Well met, traveler!");
+        this.character.Direction = player.character.Direction + 2;
+        if (this.character.Direction > 3)                        //If the player looks up (dir=2), the npc will look down ((npc.dir=4)-4 = 0). 
+            this.character.Direction -= 4;
+        
+        dialogue.NPC(id);
+        
+        /*
+        switch (id)                        //not useful at the moment, but perhaps later when NPCs have more functionality than just being talked to.
+       {
+           case 0:
+               Debug.Log("Uh-oh, something went wrong.");
+               break;
+           case 1:
+               //Debug.Log("Well met, traveler! I'm number 1!");
+               dialogue.NPC(id);
+               break;
+           case 2:
+               //Debug.Log("Well met, traveler! I'm second-in-command!");
+               dialogue.NPC(id); 
+               break;
+           case 3: 
+               //Debug.Log("Well met, traveler! Third's the charm!");
+               dialogue.NPC(id);
+               break;
+           default: 
+               break;
+       }
+       */
     }
 
     void RandomMovement()
     {
-        //TO DO:    Add a range for the NPCs to roam in;    Add alternative movement, in case the random direction is occupied/invalid
         if (character.isMoving == false)
         {
-            int caseDirection = Random.Range(0,3);        // Provides random movement for the NPC       0=down, 1=up, 2=left, 3=right
+            int caseDirection = Random.Range(0,3);        // Provides random movement for the NPC      
 
             //character.isMoving = true;
             
-            //character.Move(caseDirection);
-            
             switch (caseDirection)
             {
-                case 0:
+                case 0:        //Down
                     if (entity.currentPosition.Y + (roamRange - 1) >= entity.StartY)        //If the NPC is about to exit their roaming area, do NOT move
                         character.Move(0);                                                    //<Expand on this with the targetPosition later..>
                     else
                         RandomMovement();            //Maybe change their direction if they can't move somewhere instead.. or randomize it between both
                     break;
-                case 1:
-                    if (entity.currentPosition.Y - (roamRange - 1) <= entity.StartY)
+                case 1:        //Left
+                    if (entity.currentPosition.X + (roamRange - 1) >= entity.StartX)
                         character.Move(1);
                     else
                         RandomMovement();
                     break;
-                case 2:
-                    if (entity.currentPosition.X + (roamRange - 1) >= entity.StartX)
+                case 2:        //Up
+                    if (entity.currentPosition.Y - (roamRange - 1) <= entity.StartY)
                         character.Move(2);
                     else
                         RandomMovement();
                     break;
-                case 3:
+                case 3:        //Right
                     if (entity.currentPosition.X - (roamRange - 1) <= entity.StartY)
                         character.Move(3);
                     else

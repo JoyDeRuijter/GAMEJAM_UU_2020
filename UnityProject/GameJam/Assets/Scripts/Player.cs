@@ -8,26 +8,38 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private Entity entity;
-    Character character;
+    Grid grid;
     Tile tile;
+    
+    Entity entity;
+    public Character character;                    //    Making it public will allow the NPC script to use this to determine the player's direction, and adjust their own direction accordingly.
     NPC npc;
 
+    public Tile.Position interactPosition;                //This could go to the character script instead, but NPCs currently have no use for this, thus it remains here.
+    public string interactTarget;
+    public bool isInteracting;
+    
     public double coolDownTimer;
     public double coolDown;
-
+    
+    
     public void Start()
     {
+        grid = FindObjectOfType<Grid>();
+        tile = GetComponent<Tile>();
+        
+        character = this.GetComponent<Character>();
+        entity = GetComponent<Entity>();
+        
+        npc = FindObjectOfType<NPC>();
+        
+        
         Generate();
     }
 
     public void Generate()
     {
-        tile = GetComponent<Tile>();
-        character = this.GetComponent<Character>();
-        entity = GetComponent<Entity>();
-        
-        npc = FindObjectOfType<NPC>();
+         
     }
 
     void Update()
@@ -37,8 +49,14 @@ public class Player : MonoBehaviour
         else if (coolDownTimer <= 0)
             coolDownTimer = 0;
 
+        if(character.Direction == 0 || character.Direction == 2)
+            interactPosition = new Tile.Position(entity.currentPosition.X, entity.currentPosition.Y - 1 + character.Direction);    //If the direction is down, the target will be below. If the direction is up, the target will be above
+        else
+            interactPosition = new Tile.Position(entity.currentPosition.X - 2 + character.Direction, entity.currentPosition.Y);    //If the direction is left, the target will be left. If the direction is right, the target will be right.
+        interactTarget = grid.OfType(interactPosition.X, interactPosition.Y);
+        
         HandleInput();
-        tile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 1);                //can this be moved elsewhere? Maybe after each move?
+        tile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 1);
     }
 
     void HandleInput()
@@ -55,13 +73,13 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.W) && coolDownTimer == 0)
             {
                 //character.isMoving = true;
-                character.Move(1);
+                character.Move(2);
                 coolDownTimer = coolDown;
             }
             if (Input.GetKey(KeyCode.A) && coolDownTimer == 0)
             {
                 //character.isMoving = true;
-                character.Move(2);
+                character.Move(1);
                 coolDownTimer = coolDown;
             }
             if (Input.GetKey(KeyCode.D) && coolDownTimer == 0)
@@ -72,34 +90,9 @@ public class Player : MonoBehaviour
             }
         }
 
-
-        //TO DO:    Add interaction for all interactable objects (like trash bins, etc.), make a new script for this.       
-        //          Expand on it, so each object may have different results when interacted with
         if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Interacting..");
-            //Nog een beetje vies, en werkt momenteel niet voor iedere NPC apart
-            switch (character.Direction)
-            {
-                case 0:
-                    if (entity.currentPosition.X == npc.entity.currentPosition.X && entity.currentPosition.Y - 1 == npc.entity.currentPosition.Y)
-                        npc.Interacted();
-                    break;
-                case 1:
-                    if (entity.currentPosition.X == npc.entity.currentPosition.X && entity.currentPosition.Y + 1 == npc.entity.currentPosition.Y)
-                        npc.Interacted();
-                    break;
-                case 2:
-                    if (entity.currentPosition.X - 1 == npc.entity.currentPosition.X && entity.currentPosition.Y == npc.entity.currentPosition.Y)
-                        npc.Interacted();
-                    break;
-                case 3:
-                    if (entity.currentPosition.X + 1 == npc.entity.currentPosition.X && entity.currentPosition.Y == npc.entity.currentPosition.Y)
-                        npc.Interacted();
-                    break;
-                default:
-                    break;
-            }
-        }
+            isInteracting = true;
+        else
+            isInteracting = false;
     }
 }
