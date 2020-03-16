@@ -8,6 +8,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Building.cs" t="Include" />
+          <e p="CameraMovement.cs" t="Include" />
           <e p="Character.cs" t="Include" />
           <e p="Entity.cs" t="Include" />
           <e p="Grid.cs" t="Include" />

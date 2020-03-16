@@ -55,7 +55,7 @@ public class NPC : MonoBehaviour
         {
             int caseDirection = Random.Range(0,3);        // Provides random movement for the NPC       0=down, 1=up, 2=left, 3=right
 
-            character.isMoving = true;
+            //character.isMoving = true;
             
             //character.Move(caseDirection);
             
