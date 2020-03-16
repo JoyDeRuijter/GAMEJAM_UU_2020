@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
     public bool isMoving = false;                   // The player may not move again while it is still moving
     public int Direction;                           // The direction the character is facing.    Will later be used to choose the right sprite, to reflect this.
 
+    private float movingSpeed;
     private Vector3 movingTowards;
     
     public void Start()
@@ -24,6 +25,8 @@ public class Character : MonoBehaviour
         tile = this.GetComponent<Tile>();                // Each character has their own tile, with their own position. Therefor, tile must be a component
         grid = FindObjectOfType<Grid>();                // Grid is independant from the rest, but it's values and methods are still used
         entity = GetComponent<Entity>();
+        
+        movingSpeed = 0.08F;
         
         Generate();
     }
@@ -56,7 +59,7 @@ public class Character : MonoBehaviour
 
             if (Direction == 0)
             {
-                movingTowards.y -= 0.02F;                    //    While the character is moving in a direction, the movingTowards will gradually grow or shrink.
+                movingTowards.y -= movingSpeed;                    //    While the character is moving in a direction, the movingTowards will gradually grow or shrink.
                 if (movingTowards.y <= this.entity.currentPosition.Y)       //    if the movingTowards position has reached it's targetted position, movement will stop.
                 {
                     isMoving = false;
@@ -64,7 +67,7 @@ public class Character : MonoBehaviour
             }
             else if (Direction == 2)
             {
-                movingTowards.x -= 0.02F;
+                movingTowards.x -= movingSpeed;
                 if (movingTowards.x <= this.entity.currentPosition.X + 0.5F)
                 {
                     isMoving = false;
@@ -72,7 +75,7 @@ public class Character : MonoBehaviour
             }
             else if (Direction == 1)
             {
-                movingTowards.y += 0.02F;
+                movingTowards.y += movingSpeed;
                 if (movingTowards.y >= this.entity.currentPosition.Y)
                 {
                     isMoving = false;
@@ -80,7 +83,7 @@ public class Character : MonoBehaviour
             }
             else if (Direction == 3)
             {
-                movingTowards.x += 0.02F;
+                movingTowards.x += movingSpeed;
                 
                 if (movingTowards.x >= this.entity.currentPosition.X + 0.5F)
                 {
