@@ -10,15 +10,9 @@ public class Grid : MonoBehaviour
     public static string[,] grid;
     //public static string[,] tiles;
 
-    public static int gridWidth
-    {
-        get { return 31; }
-    }
+    public static int gridWidth { get { return 31; } }
 
-    public static int gridHeight
-    {
-        get { return 9; }
-    }
+    public static int gridHeight { get { return 9; } }
 
     Vector2 position; //positie van de grid zelf
 

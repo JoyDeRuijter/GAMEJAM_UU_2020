@@ -56,16 +56,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Building.cs" />
-     <Compile Include="Assets\Scripts\Character.cs" />
-     <Compile Include="Assets\Scripts\Entity.cs" />
-     <Compile Include="Assets\Scripts\Grid.cs" />
-     <Compile Include="Assets\Scripts\NPC.cs" />
-     <Compile Include="Assets\Scripts\Object.cs" />
-     <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\Tile.cs" />
-     <Compile Include="Assets\Scripts\Word.cs" />
-     <Compile Include="Assets\Scripts\WordGenerator.cs" />
+     <Compile Include="Assets\Scripts\Overworld\Building.cs" />
+     <Compile Include="Assets\Scripts\Overworld\Character.cs" />
+     <Compile Include="Assets\Scripts\Overworld\Entity.cs" />
+     <Compile Include="Assets\Scripts\Overworld\Grid.cs" />
+     <Compile Include="Assets\Scripts\Overworld\NPC.cs" />
+     <Compile Include="Assets\Scripts\Overworld\Object.cs" />
+     <Compile Include="Assets\Scripts\Overworld\Player.cs" />
+     <Compile Include="Assets\Scripts\Overworld\Tile.cs" />
+     <Compile Include="Assets\Scripts\UniGame\PageGrid.cs" />
+     <Compile Include="Assets\Scripts\UniGame\Symbol.cs" />
+     <Compile Include="Assets\Scripts\UniGame\WordGenerator.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

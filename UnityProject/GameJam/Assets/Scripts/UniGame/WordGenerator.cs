@@ -5,40 +5,35 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class Word : MonoBehaviour
+public class WordGenerator : MonoBehaviour
 {
-    //    Each object if this type will be contain a string of random length and symbols (generated elsewhere) and a hitbox, so it may be 'marked' when colliding with the cursor.
-    // TODO: Each word must be 'marked' when hovered over/clicked on. They can only be 'marked' in order from left to right, and top to bottom.
+    //    Currently only generates random symbols. Should 'GenerateText()' and 'WriteText()' be moved here from PageGrid,
+    //        or should 'NextSymbol()' be moved to PageGrid
 
-    public Text wordText;
-    
-    public string wordString;
-    public int wordLength;
-    
     void Start()
     {
-        wordString = "";
-        wordLength = Random.Range(3, 7);
         
-        RandomizeWord();
     }
 
     private void Update()
     {
-        wordText.GetComponent<UnityEngine.UI.Text>().text = wordString;
-        Debug.Log(wordString);
+        
     }
-
-    string RandomizeWord()
+    
+    /*public void WriteText(int x, int y)
     {
-        for (int i = 0; i < wordLength; i++)
-        {
-            wordString += nextSymbol();
-        }
-        return wordString;
-    }
+        //    Should place strings of singular symbols..
+        //    We could instantiate tiny canvasses. Text can be placed inside these, and we could add collision to these (for hovering)
+        //    Will the positioning work, though?
+        
+        //    this method profits from the previous method's for-loop. Position must still be altered.
+        GameObject SymbolClone = (GameObject)Instantiate(symbol, pagePosition, Quaternion.identity);
+        Debug.Log(pageGrid[x,y]);
+        SymbolClone.GetComponent<Symbol>().symbolText.GetComponent<UnityEngine.UI.Text>().text= pageGrid[x, y];
+        Debug.Log(SymbolClone.GetComponent<Symbol>().symbolText.GetComponent<UnityEngine.UI.Text>().text);
+    }*/
 
-    string nextSymbol()
+    public string NextSymbol()
     {
         int symbolNumber = Random.Range(1, 26);
         switch (symbolNumber)

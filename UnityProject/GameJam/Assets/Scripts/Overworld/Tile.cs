@@ -28,17 +28,10 @@ public class Tile : MonoBehaviour
         }
         public bool isValid(Grid grid)                // Will only be called by targetPosition, to check the viability of the requested movement
         {
-            /*if (!(X >= 0 && Y >= 0 && X < Grid.gridWidth && Y < Grid.gridHeight)) // If the targetPosition falls outside the grid.. 
-                return false;                                                     // ...ALWAYS invalid.
-            if (grid.isOccupied(X, Y) == false)                                  //If the targetPosition does not collide with anything...
-                    return true;                                                 //Valid!
-            else
-                    return false;*/
             if (X >= 0 && Y >= 0 && X < Grid.gridWidth && Y < Grid.gridHeight && grid.isOccupied(X, Y) == false)
                     return true;
             else
                 return false;
-
         }
     }
     
