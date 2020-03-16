@@ -23,39 +23,59 @@ public class Arrows : MonoBehaviour
         return random.Next(min, max);
     }
 
+    public void GenerateNumber()
+    {
+        Number = RandomNumber(0, 2);
+    }
+
     public void CreateArrows()
     {
-        //iets met een timer of na ieder nummer wordt Number = 3 zodat dan even allebei de pijlen op false gaan
-        Number = RandomNumber(0, 2);
-        if (Number == 0)
+        switch (Number)
         {
-            isLeft = true;
-            isRight = false;
+            case 0:
+                isLeft = true;
+                isRight = false;
+                break;
+            case 1:
+                isLeft = false;
+                isRight = true;
+                break;
+            case 2:
+                isLeft = true;
+                isRight = true;
+                break;
+            default:
+                isLeft = false;
+                isRight = false;
+                break;
         }
-        else if (Number == 1)
-        {
-            isLeft = false;
-            isRight = true;
-        }
-        else if (Number == 2)
-        {
-            isLeft = true;
-            isRight = true;
-        }
-        else if (Number == 3)
-        {
-            isLeft = false;
-            isRight = false;
-        }
+    }
+
+    public void ShowArrows()
+    {
         if (isLeft == true)
         {
-            GameObject arrowClone = Instantiate(arrow, new Vector2((float)-2, (float)-0.5), Quaternion.identity);
-            //idk hoe ik hier in verder moet atm
+            GameObject.Find("Left").transform.localScale = new Vector3(3, 3, 1);
+                //GameObject arrowClone = Instantiate(arrow, new Vector2((float)-2, (float)-0.5), Quaternion.identity);
+        }
+        else
+        {
+            GameObject.Find("Left").transform.localScale = new Vector3(0, 0, 0);
+        }
+
+        if (isRight == true)
+        {
+            GameObject.Find("Right").transform.localScale = new Vector3(3, 3, 1);
+        }
+        else
+        {
+            GameObject.Find("Right").transform.localScale = new Vector3(0, 0, 0);
         }
     }
     // Update is called once per frame
     void Update()
     {
-        
+        CreateArrows();
+        ShowArrows();
     }
 }

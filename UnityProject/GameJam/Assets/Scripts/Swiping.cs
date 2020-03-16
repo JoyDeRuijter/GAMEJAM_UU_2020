@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Swiping : MonoBehaviour
 {
     public int score = 0;
+    public Arrows arrow;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,23 +17,36 @@ public class Swiping : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            //if (visablearrow = leftarrow)
-                //delete arrowclone
-                // up score
-            //else if (visablearrow = rightarrow)
-                //show error sign
-                //delete arrowclone
-                // keep score or maybe even lose points
+            if (arrow.isLeft == true)
+            {
+                arrow.isLeft = false;
+                score += 10;
+                arrow.GenerateNumber();
+            }
+            else
+            {
+                //show mistake
+                arrow.isLeft = false;
+                score -= 5;
+                arrow.GenerateNumber();
+            }
+
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            //if (visablearrow = rightarrow)
-            //delete arrowclone
-            // up score
-            //else if (visablearrow = leftarrow)
-            //show error sign
-            //delete arrowclone
-            // keep score or maybe even lose points
+            if (arrow.isRight == true)
+            {
+                arrow.isRight = false;
+                score += 10;
+                arrow.GenerateNumber();
+            }
+            else
+            {
+                // show mistake
+                arrow.isRight = false;
+                score -= 5;
+                arrow.GenerateNumber();
+            }
         }
     }
 
@@ -43,12 +58,13 @@ public class Swiping : MonoBehaviour
 
     public void WriteScore()
     {
-        // write score on the screen using CalculateScore(); and int score
+        Console.WriteLine("Score: " + score);
     }
 
     // Update is called once per frame
     void Update()
     {
         HandleInput();
+        WriteScore();
     }
 }
