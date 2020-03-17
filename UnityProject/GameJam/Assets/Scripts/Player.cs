@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using TMPro.EditorUtilities;
 using UnityEngine;
@@ -95,6 +96,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isInteracting = true;  
+            Debug.Log("Interacting with.." + interactTarget);
         }
         else
             isInteracting = false;

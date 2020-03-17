@@ -65,6 +65,8 @@ public class NPC : MonoBehaviour
         this.character.Direction = player.character.Direction + 2;
             if (this.character.Direction >= 4) //If the player looks up (dir=2), the npc will look down ((npc.dir=4)-4 = 0). 
                 this.character.Direction -= 4;
+
+            FindObjectOfType<GameManager>().scoreFriends += 10;
             
         moveTimer = Random.Range(600, 1200);
         

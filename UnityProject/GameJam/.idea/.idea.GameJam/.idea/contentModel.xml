@@ -14,6 +14,7 @@
             <e p="DialogueController.cs" t="Include" />
           </e>
           <e p="Entity.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
           <e p="Grid.cs" t="Include" />
           <e p="NPC.cs" t="Include" />
           <e p="Object.cs" t="Include" />
