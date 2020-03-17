@@ -6,8 +6,10 @@ using System;
 public class Swiping : MonoBehaviour
 {
     private Score score;
-    //public int score = 0;
     public Arrows arrow;
+    public bool isHighlightedL;
+    public bool isHighlightedR;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +22,13 @@ public class Swiping : MonoBehaviour
         {
             if (arrow.isLeft == true)
             {
+                //HighlightLeft();
                 arrow.isLeft = false;
-                score.score += 10;
+                score.score += 1;
                 arrow.GenerateNumber();
             }
             else
             {
-                //show mistake
                 arrow.isLeft = false;
                 score.score -= 5;
                 arrow.GenerateNumber();
@@ -37,13 +39,13 @@ public class Swiping : MonoBehaviour
         {
             if (arrow.isRight == true)
             {
+                //HighlightRight();
                 arrow.isRight = false;
-                score.score += 10;
+                score.score += 1;
                 arrow.GenerateNumber();
             }
             else
             {
-                // show mistake
                 arrow.isRight = false;
                 score.score -= 5;
                 arrow.GenerateNumber();
@@ -57,4 +59,21 @@ public class Swiping : MonoBehaviour
     {
         HandleInput();
     }
+/*
+    void HighlightLeft()
+    {
+        StartCoroutine(ShowAndHide(GameObject.Find("HighlightedLeft"), 0.5f)); // 0,5 seconds
+    }
+    void HighlightRight()
+    {
+        StartCoroutine(ShowAndHide(GameObject.Find("HighlightedRight"), 0.5f)); // 0,5 seconds
+    }
+
+    IEnumerator ShowAndHide(GameObject go, float delay)
+    {
+        go.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        go.SetActive(false);
+    }
+*/
 }

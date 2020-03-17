@@ -11,12 +11,6 @@ public class Arrows : MonoBehaviour
     public bool isRight;
     public bool isLeft;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public int RandomNumber(int min, int max)
     {
         System.Random random = new System.Random();
@@ -56,7 +50,6 @@ public class Arrows : MonoBehaviour
         if (isLeft == true)
         {
             GameObject.Find("Left").transform.localScale = new Vector3(3, 3, 1);
-                //GameObject arrowClone = Instantiate(arrow, new Vector2((float)-2, (float)-0.5), Quaternion.identity);
         }
         else
         {
