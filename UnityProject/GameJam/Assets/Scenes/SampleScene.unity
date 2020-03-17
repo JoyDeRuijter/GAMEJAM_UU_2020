@@ -371,12 +371,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122407532}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f0952c8c48ce4947a6ad796bb8c08ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1558259138}
+  score: 0
 --- !u!4 &420435372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1227454942432993967, guid: c147258ba14fe9943823a00391f580c2,
@@ -394,7 +395,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -410,19 +410,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f0952c8c48ce4947a6ad796bb8c08ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 1558259138}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -624,7 +611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37242803576d6a94abcd77c24d8b7524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   arrow: {fileID: 1629618565}
 --- !u!114 &1629618565
 MonoBehaviour:
@@ -666,7 +652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37242803576d6a94abcd77c24d8b7524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   arrow: {fileID: 1693728833}
 --- !u!114 &1693728833
 MonoBehaviour:
@@ -1096,6 +1081,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ScoreText
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575167361767596111, guid: ac0c48d77e7636a4398081b2ca94f24e,
+        type: 3}
+      propertyPath: m_Text
+      value: <null>
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575167361767596111, guid: ac0c48d77e7636a4398081b2ca94f24e,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac0c48d77e7636a4398081b2ca94f24e, type: 3}

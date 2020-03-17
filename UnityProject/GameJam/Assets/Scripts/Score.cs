@@ -5,25 +5,29 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public Text text = null;
+    public Text text;
+    public int score;
     Swiping swiping;
 
     // Start is called before the first frame update
     void Start()
     {
-        text.text = "Score: 0";
+        //score = 0;
+        text.text = "Score: " + score;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        ScoreCounter();
-        text.text = "Score: " + swiping.score;
+        //ScoreCounter();
+        Debug.Log(score);
+        text.text = "Score: " + score;
     }
 
-    int ScoreCounter()
+    /*int ScoreCounter()
     {
         int currentScore = swiping.score;
         return currentScore;
-    }
+    }*/
 }

@@ -5,12 +5,13 @@ using System;
 
 public class Swiping : MonoBehaviour
 {
-    public int score = 0;
+    private Score score;
+    //public int score = 0;
     public Arrows arrow;
     // Start is called before the first frame update
     void Start()
     {
-        
+        score = FindObjectOfType<Score>();
     }
 
     void HandleInput()
@@ -20,14 +21,14 @@ public class Swiping : MonoBehaviour
             if (arrow.isLeft == true)
             {
                 arrow.isLeft = false;
-                score += 10;
+                score.score += 10;
                 arrow.GenerateNumber();
             }
             else
             {
                 //show mistake
                 arrow.isLeft = false;
-                score -= 5;
+                score.score -= 5;
                 arrow.GenerateNumber();
             }
 
@@ -37,14 +38,14 @@ public class Swiping : MonoBehaviour
             if (arrow.isRight == true)
             {
                 arrow.isRight = false;
-                score += 10;
+                score.score += 10;
                 arrow.GenerateNumber();
             }
             else
             {
                 // show mistake
                 arrow.isRight = false;
-                score -= 5;
+                score.score -= 5;
                 arrow.GenerateNumber();
             }
         }
