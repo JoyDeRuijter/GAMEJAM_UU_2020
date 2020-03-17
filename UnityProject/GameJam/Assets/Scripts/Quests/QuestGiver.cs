@@ -20,7 +20,7 @@ public class QuestGiver : MonoBehaviour
 
     public void GiveQuest()
     {
-        if (questGiven = false)
+        if (questGiven != true)
         {
             quest = questController.AssignQuest(questName);
             questGiven = true;

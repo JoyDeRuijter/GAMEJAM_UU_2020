@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\Quests\Goal.cs" />
      <Compile Include="Assets\Scripts\Quests\Quest list\FindLantern.cs" />
      <Compile Include="Assets\Scripts\Quests\Quest list\MeetPeopleQuest.cs" />
+     <Compile Include="Assets\Scripts\Quests\Quest list\TalkToNPC3.cs" />
      <Compile Include="Assets\Scripts\Quests\Quest.cs" />
      <Compile Include="Assets\Scripts\Quests\QuestController.cs" />
      <Compile Include="Assets\Scripts\Quests\QuestDatabase.cs" />

@@ -13,6 +13,8 @@ public class NPC : MonoBehaviour
     public Character character;
     public Tile npcTile;
 
+    public QuestGiver questGiver;
+    
     public Player player;
     
     public int roamRange;
@@ -24,6 +26,11 @@ public class NPC : MonoBehaviour
     void Start()
     {
         dialogue = FindObjectOfType<DialogueController>();
+
+        if (GetComponent<QuestGiver>() != null)
+        {
+            questGiver = GetComponent<QuestGiver>();
+        }
         
         character = this.GetComponent<Character>();
         entity = GetComponent<Entity>();
@@ -62,18 +69,16 @@ public class NPC : MonoBehaviour
 
     public void Interacted(int id)                    //    TODO:    Make them face the player when interacted with!!
     {
+        EventController.NpcInteracted(NPC_ID);
+        dialogue.NPC(id);
+        if (GetComponent<QuestGiver>() != null)
+            GetComponent<QuestGiver>().GiveQuest();
+
+        FindObjectOfType<GameManager>().scoreFriends += 10;
+        moveTimer = Random.Range(600, 1200);
         this.character.Direction = player.character.Direction + 2;
             if (this.character.Direction >= 4) //If the player looks up (dir=2), the npc will look down ((npc.dir=4)-4 = 0). 
                 this.character.Direction -= 4;
-
-            FindObjectOfType<GameManager>().scoreFriends += 10;
-            
-        moveTimer = Random.Range(600, 1200);
-        
-        dialogue.NPC(id);
-        
-        EventController.NpcInteracted(NPC_ID);
-       
     }
 
     void RandomMovement()
@@ -116,3 +121,13 @@ public class NPC : MonoBehaviour
         }
     }
 }
+
+
+
+
+
+
+
+
+
+

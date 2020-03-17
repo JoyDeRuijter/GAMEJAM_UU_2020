@@ -96,7 +96,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isInteracting = true;  
-            Debug.Log("Interacting with.." + interactTarget);
         }
         else
             isInteracting = false;

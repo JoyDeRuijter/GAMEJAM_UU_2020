@@ -18,14 +18,20 @@ public class QuestUIItem : MonoBehaviour
 
     public void Setup(Quest questToSetup)
     {
+        this.quest = questToSetup;                    //    Does this work?
+        
         questName.text = questToSetup.questName;
         questProgress.text = questToSetup.goal.countCurrent + "/" + questToSetup.goal.countNeeded;
     }
 
     public void UpdateProgress(Quest quest)
     {
+        Debug.Log(this.quest.questName);
+        Debug.Log(quest.questName);
+        //Debug.Log(this.quest.questName + " is not " + quest.questName);
         if (this.quest == quest)
         {
+            Debug.Log("Updating quest progress");
             questProgress.text = quest.goal.countCurrent + "/" + quest.goal.countNeeded;
         }
     }

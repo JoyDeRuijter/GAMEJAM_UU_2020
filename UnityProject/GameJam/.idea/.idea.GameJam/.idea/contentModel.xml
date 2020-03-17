@@ -29,6 +29,7 @@
             <e p="Quest list" t="Include">
               <e p="FindLantern.cs" t="Include" />
               <e p="MeetPeopleQuest.cs" t="Include" />
+              <e p="TalkToNPC3.cs" t="Include" />
             </e>
             <e p="Quest.cs" t="Include" />
             <e p="QuestController.cs" t="Include" />

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class TalkGoal : Goal
@@ -22,8 +23,11 @@ public class TalkGoal : Goal
 
    void NpcInteracted(int npcID)
    {
-      if (this.npcID == npcID)
+      Debug.Log("This.npcID= " + this.npcID + " and npcID= " + npcID);
+      //Debug.Log("NPC has been interacted with");
+      if (this.npcID == npcID || this.npcID == 0)
       {
+         //Debug.Log("the npc interacted with, is the correct one?");
          Increment(1);
          if (this.completed)
          {
