@@ -19,12 +19,17 @@ public class Movement : MonoBehaviour
     private float maxheight = 35f;
     private float minheight = -35f;
     //do not know why but these have to be private
-    private float maxwidth = 71f;
-    private float minwidth = -71f;
+    private float maxwidth = 51f;
+    private float minwidth = -51f;
     //game points
     public int points = 0;
-    //animator
+    //animation
     public Animator anim;
+
+    public bool WalkingRight = true;
+    public bool WalkingLeft = false;
+    
+    
     
     // Start is called before the first frame update
     void Start()
@@ -53,18 +58,19 @@ public class Movement : MonoBehaviour
                 moveLeft();
                 if (position.x <= (minwidth - 10))
                 {
+                    
                     state = "invisible left";
                 }
                 break;
             case "invisible right":
-                anim.SetTrigger("OutOfViewRight");
                 changeY();
+                anim.SetBool("WalkingRight", false);
                 movementSpeed = movementSpeedRandomizer();
                 state = "left";
                 break;
             case "invisible left":
-                anim.SetTrigger("OutOfViewLeft");
                 changeY();
+                anim.SetBool("WalkingRight", true);
                 movementSpeed = movementSpeedRandomizer();
                 state = "right";
                 break;
@@ -79,7 +85,7 @@ public class Movement : MonoBehaviour
     static float movementSpeedRandomizer()
     {
         float min = 0.8f;
-        float max = 5f;
+        float max = 1f;
         return Random.Range(min, max);
     }
 
@@ -94,14 +100,17 @@ public class Movement : MonoBehaviour
     {
         
         //Debug.Log("i am going right");
+        
         position.x += movementSpeed;
         transform.position = position;
         
     }
+    
 
     void moveLeft()
     {
         //Debug.Log(" i am going left");
+        
         position.x -= movementSpeed;
         transform.position = position;
     }
