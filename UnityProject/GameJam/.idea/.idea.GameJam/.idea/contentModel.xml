@@ -19,6 +19,12 @@
           <e p="NPC.cs" t="Include" />
           <e p="Object.cs" t="Include" />
           <e p="Player.cs" t="Include" />
+          <e p="Quests" t="Include">
+            <e p="Goal.cs" t="Include" />
+            <e p="MeetPeopleQuest.cs" t="Include" />
+            <e p="Quest.cs" t="Include" />
+            <e p="TalkGoal.cs" t="Include" />
+          </e>
           <e p="Tile.cs" t="Include" />
         </e>
         <e p="Text" t="Include">
