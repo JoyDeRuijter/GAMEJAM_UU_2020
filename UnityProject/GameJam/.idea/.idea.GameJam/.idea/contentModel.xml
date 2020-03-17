@@ -12,6 +12,7 @@
           <e p="Character.cs" t="Include" />
           <e p="Controllers" t="Include">
             <e p="DialogueController.cs" t="Include" />
+            <e p="EventController.cs" t="Include" />
           </e>
           <e p="Entity.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
@@ -23,6 +24,7 @@
             <e p="Goal.cs" t="Include" />
             <e p="MeetPeopleQuest.cs" t="Include" />
             <e p="Quest.cs" t="Include" />
+            <e p="QuestDatabase.cs" t="Include" />
             <e p="TalkGoal.cs" t="Include" />
           </e>
           <e p="Tile.cs" t="Include" />

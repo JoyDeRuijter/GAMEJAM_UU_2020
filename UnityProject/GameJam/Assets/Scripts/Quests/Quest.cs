@@ -15,6 +15,7 @@ public class Quest : MonoBehaviour
     public virtual void Complete()
     {
         Debug.Log("Quest completed!");
+        EventController.QuestCompleted(this);
     }
 
     public void GrantReward(string rewardType, int reward, string lossType, int loss)

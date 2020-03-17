@@ -12,6 +12,7 @@ public class TalkGoal : Goal
       countNeeded = amountNeeded;
       this.quest = quest;
       completed = false;
+      EventController.OneNpcInteracted += NpcInteracted;
    }
    
    public TalkGoal(int amountNeeded, int npcID, Quest quest) : this(amountNeeded, quest)

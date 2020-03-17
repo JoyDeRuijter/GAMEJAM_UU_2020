@@ -18,5 +18,6 @@ public class Goal
             Debug.Log("Goal completed!");
             quest.Complete();
         }
+        EventController.QuestProgressChanged(quest);
     }
 }

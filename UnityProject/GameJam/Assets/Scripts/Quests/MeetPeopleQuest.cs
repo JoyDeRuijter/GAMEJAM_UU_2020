@@ -11,6 +11,8 @@ public class MeetPeopleQuest : Quest
         description = "Go introduce yourself!";
         //skillRewards = FindObjectOfType<GameManager>().scoreFriends;
         goal = new TalkGoal(1, this);
+        
+        EventController.NpcInteracted(0);
     }
 
     public override void Complete()
