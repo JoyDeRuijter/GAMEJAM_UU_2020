@@ -59,6 +59,8 @@ public class Object : MonoBehaviour
         if (id != 0)
             id = 0;
         dialogue.Object(id);
+
+        EventController.ObjectFound(OBJ_ID);
     }
 
 }

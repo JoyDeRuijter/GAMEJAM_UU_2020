@@ -72,28 +72,8 @@ public class NPC : MonoBehaviour
         
         dialogue.NPC(id);
         
-        /*
-        switch (id)                        //not useful at the moment, but perhaps later when NPCs have more functionality than just being talked to.
-       {
-           case 0:
-               Debug.Log("Uh-oh, something went wrong.");
-               break;
-           case 1:
-               //Debug.Log("Well met, traveler! I'm number 1!");
-               dialogue.NPC(id);
-               break;
-           case 2:
-               //Debug.Log("Well met, traveler! I'm second-in-command!");
-               dialogue.NPC(id); 
-               break;
-           case 3: 
-               //Debug.Log("Well met, traveler! Third's the charm!");
-               dialogue.NPC(id);
-               break;
-           default: 
-               break;
-       }
-       */
+        EventController.NpcInteracted(NPC_ID);
+       
     }
 
     void RandomMovement()
