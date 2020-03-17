@@ -85,14 +85,14 @@ public class Movement : MonoBehaviour
         {
             anim.SetBool("WalkingRight", true);
             position.x += movementSpeed;
-            Debug.Log("moving right");
+            //Debug.Log("moving right");
             //Debug.Log(position.x + " + " + movementSpeed + " = " + (position.x+movementSpeed));
         }
         else
         {
             anim.SetBool("WalkingRight", false);
             position.x -= movementSpeed;
-            Debug.Log("Moving left");
+            //Debug.Log("Moving left");
         }
 
     }
