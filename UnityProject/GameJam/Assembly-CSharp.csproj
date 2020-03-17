@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Arrows.cs" />
+    <Compile Include="Assets\Scripts\Score.cs" />
     <Compile Include="Assets\Scripts\Swiping.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

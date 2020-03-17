@@ -50,21 +50,10 @@ public class Swiping : MonoBehaviour
         }
     }
 
-    public int CalculateScore()
-    {
-        // keep track of score
-        return score;
-    }
-
-    public void WriteScore()
-    {
-        Console.WriteLine("Score: " + score);
-    }
 
     // Update is called once per frame
     void Update()
     {
         HandleInput();
-        WriteScore();
     }
 }
