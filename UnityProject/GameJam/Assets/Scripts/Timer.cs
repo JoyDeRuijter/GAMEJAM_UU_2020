@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public Text timer;
-    float timeLeft = 10;
+    float timeLeft = 60;
     public bool timeUp;
-
+    
 
     // Start is called before the first frame update
     void Start()
