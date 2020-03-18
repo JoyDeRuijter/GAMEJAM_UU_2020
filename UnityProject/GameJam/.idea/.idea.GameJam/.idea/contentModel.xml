@@ -9,6 +9,7 @@
           <e p="ClickObject.cs" t="Include" />
           <e p="Instantiate.cs" t="Include" />
           <e p="Movement.cs" t="Include" />
+          <e p="ScoreScript.cs" t="Include" />
         </e>
       </e>
       <e p="GameJam.sln" t="IncludeFlat" />

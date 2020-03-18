@@ -40,7 +40,8 @@ public class ClickHandler : MonoBehaviour
             //Check if we hit anything
             if (hit)
             {
-                
+                Debug.Log("i am here");
+                ScoreScript.scoreValue += 1;
                 score++;
                 Debug.Log("score: "+score);
             }

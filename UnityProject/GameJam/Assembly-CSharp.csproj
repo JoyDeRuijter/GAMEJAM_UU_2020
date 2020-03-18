@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\ClickObject.cs" />
      <Compile Include="Assets\Scripts\Instantiate.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
+     <Compile Include="Assets\Scripts\ScoreScript.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/freekstijfs/Documents/GitHub/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

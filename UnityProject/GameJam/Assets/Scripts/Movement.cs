@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Animations;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Movement : MonoBehaviour
@@ -20,16 +22,16 @@ public class Movement : MonoBehaviour
     private float maxheight = 35f;
     private float minheight = -35f;
     //do not know why but these have to be private
-    private float maxwidth = 51f;
-    private float minwidth = -51f;
+    private float maxwidth = 60f;
+    private float minwidth = -60f;
     //game points
-    public int points = 0;
+    [FormerlySerializedAs("points")] public int ScoreValue = 0;
     //animation
     public Animator anim;
 
     public bool walkingRight;
     public bool movementReset;
-
+    
     private int direction;
     
     
@@ -37,7 +39,8 @@ public class Movement : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        
+       
+
         Generate();
     }
 
@@ -55,7 +58,7 @@ public class Movement : MonoBehaviour
        
        //direction = Random.Range(0, 1);
        
-       if (position.x < (minwidth - 15) || position.x >= (maxwidth+ 10))
+       if (position.x < (minwidth - 15) || position.x >= (maxwidth+ 15))
        {
             Generate();   
        }
@@ -96,10 +99,6 @@ public class Movement : MonoBehaviour
         }
 
     }
-
-    void OnMouseDown()
-    {
-        points += 1;
-    }
+    
 }
 
