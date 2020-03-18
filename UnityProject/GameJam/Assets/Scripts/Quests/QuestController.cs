@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class QuestController : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class QuestController : MonoBehaviour
     private QuestUIItem questUIItem;
     [SerializeField]
     private Transform questUIParent;
+    [SerializeField]
+    private GameObject questCanvas;
     
     private QuestDatabase questDatabase;
 
@@ -19,6 +23,23 @@ public class QuestController : MonoBehaviour
         questDatabase = GetComponent<QuestDatabase>();
     }
 
+    void Update()
+    {
+        bool isEmpty = !assignedQuests.Any(quest => !quest.completed);
+
+        if(isEmpty)
+        {
+            //    Close quest canvas
+            questCanvas.SetActive(false);
+        }
+        else if (!isEmpty)
+        {
+            //    Open quest canvas
+            questCanvas.SetActive(true);
+        }
+    }
+        
+    
     public Quest AssignQuest(string questName)
     {
         if (assignedQuests.Find(quest => quest.questName == questName))

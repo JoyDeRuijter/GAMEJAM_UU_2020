@@ -26,9 +26,6 @@ public class QuestUIItem : MonoBehaviour
 
     public void UpdateProgress(Quest quest)
     {
-        Debug.Log(this.quest.questName);
-        Debug.Log(quest.questName);
-        //Debug.Log(this.quest.questName + " is not " + quest.questName);
         if (this.quest == quest)
         {
             Debug.Log("Updating quest progress");

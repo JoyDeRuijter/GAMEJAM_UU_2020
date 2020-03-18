@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 2422435}
   - component: {fileID: 2422434}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: QuestCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1786,7 +1786,7 @@ GameObject:
   - component: {fileID: 673283318}
   - component: {fileID: 673283317}
   m_Layer: 0
-  m_Name: Questing
+  m_Name: QuestController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1820,6 +1820,7 @@ MonoBehaviour:
   questUIItem: {fileID: 4401754812583751187, guid: fc8e6d2eebdb5d04e91ff4452f7f5ee5,
     type: 3}
   questUIParent: {fileID: 1241520689}
+  questCanvas: {fileID: 2422433}
 --- !u!4 &673283319
 Transform:
   m_ObjectHideFlags: 0
