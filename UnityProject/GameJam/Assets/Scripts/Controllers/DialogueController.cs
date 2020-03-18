@@ -62,13 +62,23 @@ public class DialogueController : MonoBehaviour
         fileReader.ReadLine();
         Debug.Log(line);
         dialogueText.text = line;
-
+        dialogueInstructions.text = "Press 'spacebar' to continue..";
     }
 
-    /*public void SupportNPCs(int ID)
+    public void SupportNPCs(int ID, string npcName, int dayNumber)
     {
+        path = "Assets/Text/NPC/SupportNPC/Day" + dayNumber + "/" + npcName + "/Dialogue" + ID + ".txt";
+        fileReader = new StreamReader(path); 
+        line = fileReader.ReadLine(); 
+        textLines.Add(line); 
+        fileReader.ReadLine();
+        Debug.Log(line);
+        dialogueText.text = line;
+        dialogueInstructions.text = "Press 'spacebar' to continue..";
         
-    }*/
+        Debug.Log("Dialogue"+ID + " was called");
+    }
+
     
     public void NPC(int ID)
     {
@@ -79,7 +89,7 @@ public class DialogueController : MonoBehaviour
         fileReader.ReadLine();
         Debug.Log(line);
         dialogueText.text = line;
-        
+        dialogueInstructions.text = "Press 'spacebar' to continue..";
     }
 
     public void Object(int ID)
@@ -91,6 +101,6 @@ public class DialogueController : MonoBehaviour
         fileReader.ReadLine(); 
         Debug.Log(line); 
         dialogueText.text = line;
-        
+        dialogueInstructions.text = "Press 'spacebar' to continue..";
     }
 }
