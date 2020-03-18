@@ -51,6 +51,7 @@ public class Tile : MonoBehaviour
                 break;
             case 2:
                 TileID = "npc";
+                //Debug.Log("npc is written to grid at:" + x + ", " + y);
                 break;
             case 3:
                 TileID = "obj";
@@ -64,7 +65,8 @@ public class Tile : MonoBehaviour
             default:
                 break;
         }
-        _grid.WriteTile(x, y, TileID);       //The IdentifyTile method is called to bind the ID to the correct location in the grid. 
+        _grid.WriteTile(x, y, TileID);       //The IdentifyTile method is called to bind the ID to the correct location in the grid.     
+        //Debug.Log(_grid.OfType(x, y) + ", " + x + ", " + y);
     }
     
     

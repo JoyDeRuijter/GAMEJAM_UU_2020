@@ -2,7 +2,6 @@
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using TMPro.EditorUtilities;
 using UnityEngine;
@@ -19,8 +18,6 @@ public class Player : MonoBehaviour
     public Tile.Position interactPosition;                //This could go to the character script instead, but NPCs currently have no use for this, thus it remains here.
     public string interactTarget;
     public bool isInteracting;
-    public bool alreadyInteracting;
-//    public bool isTalking;
     
     public double coolDownTimer;
     public double coolDown;
@@ -47,8 +44,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(isTalking);
-        
         if (coolDownTimer > 0)
             coolDownTimer -= Time.deltaTime;
         else if (coolDownTimer <= 0)
@@ -68,55 +63,40 @@ public class Player : MonoBehaviour
 
     void HandleInput()
     {
-        if (!isInteracting)
+        coolDown = 0.2;
+        if (!character.isMoving)
         {
-            coolDown = 0.2;
-            if (!character.isMoving)
+            if (Input.GetKey(KeyCode.S) && coolDownTimer == 0)
             {
-                if (Input.GetKey(KeyCode.S) && coolDownTimer == 0)
-                {
-                    //character.isMoving = true;
-                    character.Move(0);
-                    coolDownTimer = coolDown;
-                }
-
-                if (Input.GetKey(KeyCode.W) && coolDownTimer == 0)
-                {
-                    //character.isMoving = true;
-                    character.Move(2);
-                    coolDownTimer = coolDown;
-                }
-
-                if (Input.GetKey(KeyCode.A) && coolDownTimer == 0)
-                {
-                    //character.isMoving = true;
-                    character.Move(1);
-                    coolDownTimer = coolDown;
-                }
-
-                if (Input.GetKey(KeyCode.D) && coolDownTimer == 0)
-                {
-                    //character.isMoving = true;
-                    character.Move(3);
-                    coolDownTimer = coolDown;
-                }
+                //character.isMoving = true;
+                character.Move(0);
+                coolDownTimer = coolDown;
             }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-                isInteracting = true;
-            else if (!Input.GetKeyDown(KeyCode.Space))
-                isInteracting = false;
+            if (Input.GetKey(KeyCode.W) && coolDownTimer == 0)
+            {
+                //character.isMoving = true;
+                character.Move(2);
+                coolDownTimer = coolDown;
+            }
+            if (Input.GetKey(KeyCode.A) && coolDownTimer == 0)
+            {
+                //character.isMoving = true;
+                character.Move(1);
+                coolDownTimer = coolDown;
+            }
+            if (Input.GetKey(KeyCode.D) && coolDownTimer == 0)
+            {
+                //character.isMoving = true;
+                character.Move(3);
+                coolDownTimer = coolDown;
+            }
         }
-        else if (isInteracting)
-        { 
-            if (Input.GetKeyDown(KeyCode.Space)) 
-                isInteracting = false;
-                //else if (!Input.GetKeyDown(KeyCode.Space))
-                    
-                //alreadyInteracting = true;
-                //Debug.Log(isInteracting + " -> this should be false..");
-        }
 
-        //Debug.Log(isInteracting);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isInteracting = true;  
+        }
+        else
+            isInteracting = false;
     }
 }
