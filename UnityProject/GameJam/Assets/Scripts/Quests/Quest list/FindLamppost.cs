@@ -17,7 +17,7 @@ public class FindLamppost : Quest
 
     public override void Complete()
     {
-        GrantReward("friends", 10, null, 0);
+        GrantReward("friends", 5, "party", 5);
         base.Complete();
     }
 }

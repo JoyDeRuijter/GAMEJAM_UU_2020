@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TinderGame.unity
     guid: ecb842c4ef9cfdb4eb3a769587069eb7
+  - enabled: 1
+    path: Assets/Scenes/EpilogueScene.unity
+    guid: e6e83b31d353a7b49a06d47535187bf3
   m_configObjects: {}

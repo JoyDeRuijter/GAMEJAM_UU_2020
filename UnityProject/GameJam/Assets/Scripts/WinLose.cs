@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinLose : MonoBehaviour
 {
-    public TinderGameGoal goal;
+    public TinderGoal goal;
     public Score score;
     public Timer timer;
     public bool hasWon;
@@ -47,11 +48,13 @@ public class WinLose : MonoBehaviour
         {
             isPlaying = false;
             HideGame();
+            SceneManager.LoadScene("EpilogueScene");
         }
         else if (hasLost == true)
         {
             isPlaying = false;
             HideGame();
+            SceneManager.LoadScene("EpilogueScene");
         }
         else if (isPlaying == true)
             return;
