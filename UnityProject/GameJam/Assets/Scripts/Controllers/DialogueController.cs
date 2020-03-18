@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class DialogueController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject dialogueCanvas;
+    
     List<string> textLines;
     StreamReader fileReader;
     private string path;
@@ -26,10 +29,24 @@ public class DialogueController : MonoBehaviour
 
     void Update()
     {
-        //Console.WriteLine(line);
-        //Debug.Log(line);
+        if(line == null)
+        {
+            //    Close dialogue canvas
+            dialogueCanvas.SetActive(false);
+        }
+        else if (line != null)
+        {
+            //    Open dialogue canvas
+            dialogueCanvas.SetActive(true);
+        }
     }
 
+    public void clearLine()
+    {
+        line = null;
+    }
+
+    //    TODO: Make this more flexible.. Extend it, in case a character has multiple lines.
     public void NPC(int ID)
     {
         path = "Assets/Text/NPC/NPC_Dialogue" + ID + ".txt";

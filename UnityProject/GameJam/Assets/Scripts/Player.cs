@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public Tile.Position interactPosition;                //This could go to the character script instead, but NPCs currently have no use for this, thus it remains here.
     public string interactTarget;
     public bool isInteracting;
+    public bool isTalking;
     
     public double coolDownTimer;
     public double coolDown;
@@ -45,6 +46,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(isTalking);
+        
         if (coolDownTimer > 0)
             coolDownTimer -= Time.deltaTime;
         else if (coolDownTimer <= 0)
@@ -93,11 +96,18 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(!isTalking)
+                if (Input.GetKeyDown(KeyCode.Space))
+                    isInteracting = true;
+                else
+                    isInteracting = false;
+        else if (isTalking)
         {
-            isInteracting = true;  
+            Debug.Log("Is talking");
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                npc.EndConversation();
+            }
         }
-        else
-            isInteracting = false;
     }
 }

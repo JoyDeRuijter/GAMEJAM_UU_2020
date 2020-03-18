@@ -7,7 +7,7 @@ public class NPC : MonoBehaviour
     //Will handle interaction and random movement
     //Collision will be done elsewhere (and for all objects with collision)
 
-    public DialogueController dialogue;
+    //public DialogueController dialogue;
     
     public Entity entity;
     public Character character;
@@ -21,11 +21,12 @@ public class NPC : MonoBehaviour
 
     public int NPC_ID;
 
-    int moveTimer;
+    private int moveTimer;
+    private bool isTalking;
 
     void Start()
     {
-        dialogue = FindObjectOfType<DialogueController>();
+        //dialogue = FindObjectOfType<DialogueController>();
 
         if (GetComponent<QuestGiver>() != null)
         {
@@ -48,12 +49,19 @@ public class NPC : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(isTalking);
         moveTimer--;
         if (moveTimer == 0)
         {
             RandomMovement();
             moveTimer = Random.Range(300,600);
         }
+        
+        if (!isTalking)
+        {
+            FindObjectOfType<DialogueController>().clearLine();
+        }
+        
         
         npcTile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 2);
         
@@ -63,14 +71,17 @@ public class NPC : MonoBehaviour
             {
                 Interacted(NPC_ID);
             }
-            
         }
     }
 
-    public void Interacted(int id)                    //    TODO:    Make them face the player when interacted with!!
+    public void Interacted(int npcID)                    //    TODO:    Make them face the player when interacted with!!
     {
         EventController.NpcInteracted(NPC_ID);
-        dialogue.NPC(id);
+        
+        FindObjectOfType<DialogueController>().NPC(npcID);
+        EngageConversation();
+        
+        
         if (GetComponent<QuestGiver>() != null)
             GetComponent<QuestGiver>().GiveQuest();
 
@@ -81,6 +92,20 @@ public class NPC : MonoBehaviour
                 this.character.Direction -= 4;
     }
 
+    void EngageConversation()
+    {
+        isTalking = true;
+        player.isTalking = true;
+        Debug.Log(player.isTalking);
+    }
+
+    public void EndConversation()
+    {
+        isTalking = false;
+        player.isTalking = false;
+        Debug.Log(player.isTalking);
+    }
+    
     void RandomMovement()
     {
         //    TODO: Roamrange is kapot gegaan bij merge; even naar kijken!!
