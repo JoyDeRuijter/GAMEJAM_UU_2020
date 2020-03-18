@@ -17,7 +17,8 @@ public class MeetPeopleQuest : Quest
 
     public override void Complete()
     {
-        GrantReward("friends", 10, null, 0);
+        GrantReward("friends", 15, null, 0);
+        GrantReward("party", 10, null, 0);
         base.Complete();
     }
 }
