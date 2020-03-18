@@ -5,16 +5,16 @@ using System;
 
 public class Swiping : MonoBehaviour
 {
-    private Score score;
+    private TinderScore score;
     public Arrows arrow;
-    public WinLose winLose;
+    public TinderWinLose winLose;
     public bool isHighlightedL;
     public bool isHighlightedR;
 
     // Start is called before the first frame update
     void Start()
     {
-        score = FindObjectOfType<Score>();
+        score = FindObjectOfType<TinderScore>();
     }
 
     void HandleInput()
