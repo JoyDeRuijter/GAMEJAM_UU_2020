@@ -12,12 +12,12 @@ public class Grid : MonoBehaviour
 
     public static int gridWidth
     {
-        get { return 31; }
+        get { return 55; }
     }
 
     public static int gridHeight
     {
-        get { return 9; }
+        get { return 40; }
     }
 
     Vector2 position; //positie van de grid zelf

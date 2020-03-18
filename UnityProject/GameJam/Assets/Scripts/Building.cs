@@ -67,15 +67,59 @@ public class Building : MonoBehaviour
     {
         switch (ID)
         {
-            case 0:                        //House
-                Build(4,1, ID);
+            case 0:                        //Bar
+                Build(4,3, ID);
                 break;
-            case 1:                        //Flat
-                Build(7,5, ID);
+            case 1:                        //Bedrijf
+                Build(8,11, ID);
                 break;
-            case 2:                        //Uni
-                Build(20, 5, ID);
+            case 2:                        //BedrijfGesloten
+                Build(8, 11, ID);
                 break;
+            case 3:                         //FlatOmega
+                Build(8, 11, ID);
+                break;
+            case 4:                         //Universiteit
+                Build(16, 11, ID);
+                break;
+            case 5:                         //Huis
+                Build(4, 3, ID);
+                break;
+            /*
+        case 6:                         //
+            Build();
+            break;
+        case 7:                         //
+            Build();
+            break;
+        case 8:                         //
+            Build();
+            break;
+        case 9:                         //
+            Build();
+            break;
+        case 10:                         //
+            Build();
+            break;
+        case 11:                         //
+            Build();
+            break;
+        case 12:                         //
+            Build();
+            break;
+        case 13:                         //
+            Build();
+            break;
+        case 14:                         //
+            Build();
+            break;
+        case 15:                         //
+            Build();
+            break;
+        case 16:
+            Build();
+            break;
+            */
             default:
                 break;
         }
@@ -102,6 +146,15 @@ public class Building : MonoBehaviour
                 break;
             case 2:
                 doorPosition = new Tile.Position(entity.currentPosition.X + 5, entity.currentPosition.Y + 4);
+                break;
+            case 3:
+                doorPosition = new Tile.Position(entity.currentPosition.X + 2, entity.currentPosition.Y + 0);
+                break;
+            case 4:
+                doorPosition = new Tile.Position(entity.currentPosition.X + 2, entity.currentPosition.Y + 0);
+                break;
+            case 5:
+                doorPosition = new Tile.Position(entity.currentPosition.X + 2, entity.currentPosition.Y + 0);
                 break;
             default:
                 break;
