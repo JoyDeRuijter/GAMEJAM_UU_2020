@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ClickObject : MonoBehaviour
 {
+    Endscreen end;
     void LateUpdate()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && end.isPlaying == true)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay((Input.mousePosition));

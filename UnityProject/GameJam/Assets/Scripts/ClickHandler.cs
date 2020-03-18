@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ClickHandler : MonoBehaviour
 {
+    ScoreScript score;
+    Endscreen end;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +16,7 @@ public class ClickHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && end.isPlaying == true)
         {
             //Debug.Log("Mouse is pressed down");
             Camera cam = Camera.main;
@@ -40,8 +42,8 @@ public class ClickHandler : MonoBehaviour
             if (hit)
             {
                 Debug.Log("i am here");
-                ScoreScript.scoreValue += 1;
-                Debug.Log("score: "+ ScoreScript.scoreValue);
+                score.scoreValue += 1;
+                Debug.Log("score: "+ score.scoreValue);
 
             }
         }

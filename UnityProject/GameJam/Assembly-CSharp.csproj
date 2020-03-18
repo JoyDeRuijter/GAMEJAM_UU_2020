@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ClickHandler.cs" />
     <Compile Include="Assets\Scripts\ClickObject.cs" />
+    <Compile Include="Assets\Scripts\Endscreen.cs" />
     <Compile Include="Assets\Scripts\Goal.cs" />
     <Compile Include="Assets\Scripts\Instantiate.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />

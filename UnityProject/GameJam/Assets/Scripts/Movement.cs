@@ -33,7 +33,8 @@ public class Movement : MonoBehaviour
     public bool movementReset;
     
     private int direction;
-    
+
+    Endscreen end;
     
     // Start is called before the first frame update
     void Start()
@@ -46,25 +47,24 @@ public class Movement : MonoBehaviour
 
     void Generate()
     {
-        walkingRight ^= true;
-        movementSpeed = movementSpeedRandomizer();
-        position.y = positionYRandomizer();
+            walkingRight ^= true;
+            movementSpeed = movementSpeedRandomizer();
+            position.y = positionYRandomizer();
     }
     
     // Update is called once per frame
     void Update()
     {
-       transform.position = position;
-       
-       //direction = Random.Range(0, 1);
-       
-       if (position.x < (minwidth - 15) || position.x >= (maxwidth+ 15))
-       {
-            Generate();   
-       }
-      
-       Move();
-       
+            transform.position = position;
+
+            //direction = Random.Range(0, 1);
+
+            if (position.x < (minwidth - 15) || position.x >= (maxwidth + 15))
+            {
+                Generate();
+            }
+
+            Move();
     }
     
 
@@ -84,20 +84,19 @@ public class Movement : MonoBehaviour
 
     void Move()
     {
-        if (walkingRight)
-        {
-            anim.SetBool("WalkingRight", true);
-            position.x += movementSpeed;
-            //Debug.Log("moving right");
-            //Debug.Log(position.x + " + " + movementSpeed + " = " + (position.x+movementSpeed));
-        }
-        else
-        {
-            anim.SetBool("WalkingRight", false);
-            position.x -= movementSpeed;
-            //Debug.Log("Moving left");
-        }
-
+            if (walkingRight)
+            {
+                anim.SetBool("WalkingRight", true);
+                position.x += movementSpeed;
+                //Debug.Log("moving right");
+                //Debug.Log(position.x + " + " + movementSpeed + " = " + (position.x+movementSpeed));
+            }
+            else
+            {
+                anim.SetBool("WalkingRight", false);
+                position.x -= movementSpeed;
+                //Debug.Log("Moving left");
+            }
     }
     
 }
