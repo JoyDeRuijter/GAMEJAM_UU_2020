@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Endscreen : MonoBehaviour
 {
-    public Goal goal;
-    public ScoreScript score;
-    public Timer timer;
+    public FriendsGoal goal;
+    public FriendsScore score;
+    public FriendsTimer timer;
     public bool hasWon;
     public bool hasLost;
     public bool isPlaying;

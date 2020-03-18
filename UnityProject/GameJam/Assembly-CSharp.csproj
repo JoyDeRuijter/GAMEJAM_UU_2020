@@ -71,6 +71,11 @@
     <Compile Include="Assets\Scripts\Controllers\DialogueController.cs" />
     <Compile Include="Assets\Scripts\Endscreen.cs" />
     <Compile Include="Assets\Scripts\Entity.cs" />
+    <Compile Include="Assets\Scripts\FriendsGoal.cs" />
+    <Compile Include="Assets\Scripts\FriendsInstantiate.cs" />
+    <Compile Include="Assets\Scripts\FriendsMovement.cs" />
+    <Compile Include="Assets\Scripts\FriendsScore.cs" />
+    <Compile Include="Assets\Scripts\FriendsTimer.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\Instantiate.cs" />
