@@ -6,7 +6,7 @@ public class QuestGiver : MonoBehaviour
 {
     [SerializeField] public string questName;
     private QuestController questController;
-    private Quest quest;
+    public Quest quest;
 
     public bool questGiven;
     // Start is called before the first frame update

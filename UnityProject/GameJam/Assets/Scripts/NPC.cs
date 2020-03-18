@@ -9,11 +9,13 @@ public class NPC : MonoBehaviour
 
     //public DialogueController dialogue;
     
+    
     public Entity entity;
     public Character character;
     public Tile npcTile;
 
     public QuestGiver questGiver;
+    public SupportNPC supportNPC;
     
     public Player player;
     
@@ -23,15 +25,16 @@ public class NPC : MonoBehaviour
 
     private int moveTimer;
     private bool isTalking;
+    private int engageCount;
 
     void Start()
     {
         //dialogue = FindObjectOfType<DialogueController>();
 
         if (GetComponent<QuestGiver>() != null)
-        {
             questGiver = GetComponent<QuestGiver>();
-        }
+        if (GetComponent<SupportNPC>() != null)
+            supportNPC = GetComponent<SupportNPC>();
         
         character = this.GetComponent<Character>();
         entity = GetComponent<Entity>();
@@ -84,45 +87,83 @@ public class NPC : MonoBehaviour
         {
             //DINGEN DIE HIJ EEN KEER DOET TIJDENS INTERACTION
             if (!isTalking)
-                EngageConversation(npcID);        
-            
+            {
+                engageCount = 0;
+                EngageConversation(npcID, engageCount);        
+            }
             //DINGEN DIE HIJ CONTINU DOET TIJDENS INTERACTION
             moveTimer = Random.Range(600, 1200);
             this.character.Direction = player.character.Direction + 2;
             if (this.character.Direction >= 4)         //If the player looks up (dir=2), the npc will look down ((npc.dir=4)-4 = 0). 
                 this.character.Direction -= 4;
         }
+
         if (!player.isInteracting && isTalking)
-            EndConversation();
-        
+            NextConversation();
+        //EndConversation();
+
     }
 
-    void EngageConversation(int npcID)
+    void EngageConversation(int npcID, int engageCount)
     {
         isTalking = true;
 
         if (npcID != 0)
         {
             EventController.NpcInteracted(NPC_ID);
-            if (GetComponent<QuestGiver>() != null && !GetComponent<QuestGiver>().questGiven)
-            {
-                FindObjectOfType<DialogueController>().Quest(GetComponent<QuestGiver>().questName, 1);
-                GetComponent<QuestGiver>().GiveQuest();
-            }
-            else if (GetComponent<QuestGiver>() == null || GetComponent<QuestGiver>().questGiven)
-                FindObjectOfType<DialogueController>().NPC(npcID);
 
+            if (supportNPC != null)
+            {
+                Debug.Log("support npc is called");
+                FindObjectOfType<DialogueController>().SupportNPCs(engageCount, supportNPC.name, supportNPC.dayNumber);
+            }
+            else if (questGiver != null)// && !GetComponent<QuestGiver>().questGiven)
+            {
+                if (!questGiver.questGiven)
+                {
+                    questGiver.GiveQuest();
+                    //if(GetComponent<QuestGiver>().quest.completed)
+                    FindObjectOfType<DialogueController>().Quest(questGiver.questName, 1);
+                }
+                else if (questGiver.questGiven)
+                {
+                    FindObjectOfType<DialogueController>().Quest(questGiver.questName, 2);
+                    if (questGiver.quest.completed)
+                    {
+                        FindObjectOfType<DialogueController>().Quest(questGiver.questName, 3);
+                    }
+                }
+            }
+            else //if (supportNPC == null && questGiver == null || questGiver.questGiven)
+                FindObjectOfType<DialogueController>().NPC(npcID);
             
         }
         else
         {
             player.isInteracting = false;
         }
-
-        
-
     }
 
+    public void NextConversation()
+    {
+        if(supportNPC !=null)
+            if (engageCount < supportNPC.lineCount - 1)
+            {
+                engageCount++;
+                player.isInteracting = true;
+                Debug.Log("Next convo");
+                EngageConversation(NPC_ID, engageCount);
+            }
+            else
+            {
+                EndConversation();
+            }
+        else
+        {
+            EndConversation();
+        }
+    }
+    
     public void EndConversation()
     {
         isTalking = false;

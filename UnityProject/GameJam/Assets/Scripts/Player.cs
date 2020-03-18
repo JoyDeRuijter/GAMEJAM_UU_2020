@@ -20,7 +20,9 @@ public class Player : MonoBehaviour
     public string interactTarget;
     public bool isInteracting;
     public bool alreadyInteracting;
-//    public bool isTalking;
+
+    public bool answerYes;
+    public bool answerNo;
     
     public double coolDownTimer;
     public double coolDown;
@@ -110,7 +112,12 @@ public class Player : MonoBehaviour
         else if (isInteracting)
         { 
             if (Input.GetKeyDown(KeyCode.Space)) 
-                isInteracting = false;
+                NextInteraction();
         }
+    }
+
+    public void NextInteraction()
+    {
+        isInteracting = false;
     }
 }

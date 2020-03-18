@@ -17,7 +17,8 @@ public class QuestController : MonoBehaviour
     private GameObject questCanvas;
     
     private QuestDatabase questDatabase;
-
+    
+   
     private void Start()
     {
         questDatabase = GetComponent<QuestDatabase>();
@@ -38,8 +39,7 @@ public class QuestController : MonoBehaviour
             questCanvas.SetActive(true);
         }
     }
-        
-    
+
     public Quest AssignQuest(string questName)
     {
         if (assignedQuests.Find(quest => quest.questName == questName))
