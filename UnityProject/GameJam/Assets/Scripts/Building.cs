@@ -68,22 +68,22 @@ public class Building : MonoBehaviour
         switch (ID)
         {
             case 0:                        //Bar
-                Build(4,3, ID);
+                Build(4,3, ID,0,0);
                 break;
             case 1:                        //Bedrijf
-                Build(8,11, ID);
+                Build(8,11, ID,0,0);
                 break;
             case 2:                        //BedrijfGesloten
-                Build(8, 11, ID);
+                Build(8, 11, ID,0,0);
                 break;
             case 3:                         //FlatOmega
-                Build(8, 11, ID);
+                Build(8, 11, ID,2,4);
                 break;
             case 4:                         //Universiteit
-                Build(16, 11, ID);
+                Build(17, 11, ID,6,4);
                 break;
             case 5:                         //Huis
-                Build(4, 3, ID);
+                Build(4, 3, ID,0,0);
                 break;
             /*
         case 6:                         //
@@ -127,13 +127,13 @@ public class Building : MonoBehaviour
 
     
     //    TODO: Make more variations based on the sprites we have
-    void Build(int width, int height, int ID)
+    void Build(int width, int height, int ID, int corrX, int corrY)
     {
         for(int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {                                                        //Writes the identity of wall-tiles to the main grid
-                tile.IdTile(entity.currentPosition.X + x, entity.currentPosition.Y + y, 4);
+                tile.IdTile(entity.currentPosition.X + x - corrX, entity.currentPosition.Y + y - corrY, 4);
             }
         }
         switch (ID)
@@ -148,10 +148,12 @@ public class Building : MonoBehaviour
                 doorPosition = new Tile.Position(entity.currentPosition.X + 5, entity.currentPosition.Y + 4);
                 break;
             case 3:
-                doorPosition = new Tile.Position(entity.currentPosition.X + 2, entity.currentPosition.Y + 0);
+                doorPosition = new Tile.Position(entity.currentPosition.X + 3, entity.currentPosition.Y + 0);
+                doorPosition = new Tile.Position(entity.currentPosition.X + 4, entity.currentPosition.Y + 0);
                 break;
             case 4:
-                doorPosition = new Tile.Position(entity.currentPosition.X + 2, entity.currentPosition.Y + 0);
+                doorPosition = new Tile.Position(entity.currentPosition.X + 8, entity.currentPosition.Y + 0);
+                doorPosition = new Tile.Position(entity.currentPosition.X + 9, entity.currentPosition.Y + 0);
                 break;
             case 5:
                 doorPosition = new Tile.Position(entity.currentPosition.X + 2, entity.currentPosition.Y + 0);
