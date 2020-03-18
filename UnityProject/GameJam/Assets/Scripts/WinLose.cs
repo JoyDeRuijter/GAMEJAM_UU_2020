@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WinLose : MonoBehaviour
 {
-    public Goal goal;
+    public TinderGameGoal goal;
     public Score score;
     public Timer timer;
     public bool hasWon;

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Building : MonoBehaviour
 {
@@ -10,16 +11,20 @@ public class Building : MonoBehaviour
     
     public int Building_ID;
 
-    private Vector2 position;
+    //private Vector2 position;
 
+    private Player player;
     private Tile tile;
     private Entity entity;
     
     private bool isGenerated;
 
+    public Tile.Position doorPosition;
+
     
     void Start()
     {
+        player = FindObjectOfType<Player>();
         entity = this.GetComponent<Entity>();
         tile = this.GetComponent<Tile>();
         
@@ -43,6 +48,18 @@ public class Building : MonoBehaviour
         {
             isGenerated = true;
             BuildingSize(Building_ID); //Het liefst doen we deze in de Generate-methode, maar dat leidt tot een NullReference error.
+        }
+        
+        if (player.interactTarget == "door" && player.isInteracting)
+        {
+            if (player.interactPosition.X == this.doorPosition.X && player.interactPosition.Y == this.doorPosition.Y)
+            {
+                Debug.Log("Trying to access door..");
+                
+                //    TODO: Add the correct LoadScene to the correct doors.
+                //SceneManager.LoadScene("SampleScene");
+            }
+            
         }
     }
 
@@ -78,17 +95,18 @@ public class Building : MonoBehaviour
         switch (ID)
         {
             case 0:
-                tile.IdTile(entity.currentPosition.X + 2, entity.currentPosition.Y + 0, 5);
+                doorPosition = new Tile.Position(entity.currentPosition.X + 2, entity.currentPosition.Y + 0);
                 break;
             case 1:
-                tile.IdTile(entity.currentPosition.X + 3, entity.currentPosition.Y + 4, 5);
+                doorPosition = new Tile.Position(entity.currentPosition.X + 3, entity.currentPosition.Y + 4);
                 break;
             case 2:
-                tile.IdTile(entity.currentPosition.X + 5, entity.currentPosition.Y + 4, 5);
+                doorPosition = new Tile.Position(entity.currentPosition.X + 5, entity.currentPosition.Y + 4);
                 break;
             default:
                 break;
         }
+        tile.IdTile(doorPosition.X, doorPosition.Y, 5);
         
     }
 }

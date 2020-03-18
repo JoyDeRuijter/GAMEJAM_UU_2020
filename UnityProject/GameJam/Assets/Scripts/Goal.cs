@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Goal : MonoBehaviour
+public class TinderGameGoal : MonoBehaviour
 {
     public Text goalText;
     public int goal;
