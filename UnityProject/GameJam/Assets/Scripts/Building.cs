@@ -54,10 +54,7 @@ public class Building : MonoBehaviour
         {
             if (player.interactPosition.X == this.doorPosition.X && player.interactPosition.Y == this.doorPosition.Y)
             {
-                Debug.Log("Trying to access door..");
-                
-                //    TODO: Add the correct LoadScene to the correct doors.
-                //SceneManager.LoadScene("SampleScene");
+                SceneManager.LoadScene("TinderGame");
             }
             
         }
