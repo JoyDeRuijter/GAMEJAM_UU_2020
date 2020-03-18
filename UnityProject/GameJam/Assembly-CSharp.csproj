@@ -78,43 +78,64 @@
     <Compile Include="Assets\Scripts\Tile.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\Scripts\WinLose.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Quests\EventController.cs" />
+    <Compile Include="Assets\Scripts\Quests\Goal list\FindGoal.cs" />
+    <Compile Include="Assets\Scripts\Quests\Goal list\TalkGoal.cs" />
+    <Compile Include="Assets\Scripts\Quests\Goal.cs" />
+    <Compile Include="Assets\Scripts\Quests\Quest list\FindLantern.cs" />
+    <Compile Include="Assets\Scripts\Quests\Quest list\MeetPeopleQuest.cs" />
+    <Compile Include="Assets\Scripts\Quests\Quest list\TalkToNPC3.cs" />
+    <Compile Include="Assets\Scripts\Quests\Quest.cs" />
+    <Compile Include="Assets\Scripts\Quests\QuestController.cs" />
+    <Compile Include="Assets\Scripts\Quests\QuestDatabase.cs" />
+    <Compile Include="Assets\Scripts\Quests\QuestGiver.cs" />
+    <Compile Include="Assets\Scripts\Quests\QuestUIItem.cs" />
+
     <None Include="Assets\Text\NPC\NPC_Dialogue2.txt" />
     <None Include="Assets\Text\NPC\NPC_Dialogue3.txt" />
     <None Include="Assets\Text\NPC\NPC_Dialogue0.txt" />
     <None Include="Assets\Text\Object\Object_Description0.txt" />
     <None Include="Assets\Text\NPC\NPC_Dialogue1.txt" />
+    <None Include="Assets\Text\Quest\MeetPeopleQuest\MeetPeopleQuest_Dialogue1.txt" />
+    <None Include="Assets\Text\Object\Object_Description0.txt" />
+    <None Include="Assets\Text\Quest\TalkToNPC3\TalkToNPC3_Dialogue1.txt" />
+    <None Include="Assets\Text\Object\Object_Description1.txt" />
+    <None Include="Assets\Text\Quest\FindLantern\FindLantern_Dialogue1.txt" />
+
+
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/joyde/Development/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/siwer/GameJam/Gamejam2020/UnityProject/GameJam/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
