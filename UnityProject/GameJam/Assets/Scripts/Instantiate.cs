@@ -26,16 +26,11 @@ public class Instantiate : MonoBehaviour
 
 
     void Start()
-    
     {
         Instantiate(npc);
         Instantiate(npc1);
         Instantiate(npc2);
         Instantiate(npc3);
-        
-
-
-
     }
 
     // Update is called once per frame

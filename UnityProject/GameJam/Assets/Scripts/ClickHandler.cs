@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ClickHandler : MonoBehaviour
 {
-    public int score;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +41,8 @@ public class ClickHandler : MonoBehaviour
             {
                 Debug.Log("i am here");
                 ScoreScript.scoreValue += 1;
-                score++;
-                Debug.Log("score: "+score);
+                Debug.Log("score: "+ ScoreScript.scoreValue);
+
             }
         }
     }    

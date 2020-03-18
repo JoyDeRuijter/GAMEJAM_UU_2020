@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class ClickObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-
-    // Update is called once per frame
     void LateUpdate()
     {
         if (Input.GetMouseButtonDown(0))

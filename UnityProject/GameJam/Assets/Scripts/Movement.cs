@@ -72,8 +72,8 @@ public class Movement : MonoBehaviour
     //Generating a random number that can be used for creating random speed
     static float movementSpeedRandomizer()
     {
-        float min = 0.3f;
-        float max = 1f;
+        float min = 0.1f;
+        float max = 0.6f;
         return Random.Range(min, max);
     }
 
