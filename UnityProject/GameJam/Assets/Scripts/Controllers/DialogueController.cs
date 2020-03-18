@@ -4,11 +4,15 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {
     [SerializeField]
     private GameObject dialogueCanvas;
+    [SerializeField]
+    private Text dialogueText, dialogueInstructions;
+
     
     List<string> textLines;
     StreamReader fileReader;
@@ -44,9 +48,28 @@ public class DialogueController : MonoBehaviour
     public void clearLine()
     {
         line = null;
+        //dialogueText = null;
     }
 
     //    TODO: Make this more flexible.. Extend it, in case a character has multiple lines.
+
+    public void Quest(string questName, int dialogueOrder)
+    {
+        path = "Assets/Text/Quest/" +  questName + "/" + questName + "_Dialogue" + dialogueOrder + ".txt";
+        fileReader = new StreamReader(path); 
+        line = fileReader.ReadLine(); 
+        textLines.Add(line); 
+        fileReader.ReadLine();
+        Debug.Log(line);
+        dialogueText.text = line;
+
+    }
+
+    /*public void SupportNPCs(int ID)
+    {
+        
+    }*/
+    
     public void NPC(int ID)
     {
         path = "Assets/Text/NPC/NPC_Dialogue" + ID + ".txt";
@@ -55,15 +78,19 @@ public class DialogueController : MonoBehaviour
         textLines.Add(line); 
         fileReader.ReadLine();
         Debug.Log(line);
+        dialogueText.text = line;
+        
     }
 
     public void Object(int ID)
     {
-        path = "Assets/Text/Object/Object_Description" + ID + ".txt";
+        path = "Assets/Text/Object/Object_Description" + ID + ".txt"; 
         fileReader = new StreamReader(path); 
         line = fileReader.ReadLine(); 
         textLines.Add(line); 
-        fileReader.ReadLine();
-        Debug.Log(line);
+        fileReader.ReadLine(); 
+        Debug.Log(line); 
+        dialogueText.text = line;
+        
     }
 }

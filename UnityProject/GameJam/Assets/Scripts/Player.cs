@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     public Tile.Position interactPosition;                //This could go to the character script instead, but NPCs currently have no use for this, thus it remains here.
     public string interactTarget;
     public bool isInteracting;
-    public bool isTalking;
+    public bool alreadyInteracting;
+//    public bool isTalking;
     
     public double coolDownTimer;
     public double coolDown;
@@ -67,47 +68,55 @@ public class Player : MonoBehaviour
 
     void HandleInput()
     {
-        coolDown = 0.2;
-        if (!character.isMoving)
+        if (!isInteracting)
         {
-            if (Input.GetKey(KeyCode.S) && coolDownTimer == 0)
+            coolDown = 0.2;
+            if (!character.isMoving)
             {
-                //character.isMoving = true;
-                character.Move(0);
-                coolDownTimer = coolDown;
+                if (Input.GetKey(KeyCode.S) && coolDownTimer == 0)
+                {
+                    //character.isMoving = true;
+                    character.Move(0);
+                    coolDownTimer = coolDown;
+                }
+
+                if (Input.GetKey(KeyCode.W) && coolDownTimer == 0)
+                {
+                    //character.isMoving = true;
+                    character.Move(2);
+                    coolDownTimer = coolDown;
+                }
+
+                if (Input.GetKey(KeyCode.A) && coolDownTimer == 0)
+                {
+                    //character.isMoving = true;
+                    character.Move(1);
+                    coolDownTimer = coolDown;
+                }
+
+                if (Input.GetKey(KeyCode.D) && coolDownTimer == 0)
+                {
+                    //character.isMoving = true;
+                    character.Move(3);
+                    coolDownTimer = coolDown;
+                }
             }
-            if (Input.GetKey(KeyCode.W) && coolDownTimer == 0)
-            {
-                //character.isMoving = true;
-                character.Move(2);
-                coolDownTimer = coolDown;
-            }
-            if (Input.GetKey(KeyCode.A) && coolDownTimer == 0)
-            {
-                //character.isMoving = true;
-                character.Move(1);
-                coolDownTimer = coolDown;
-            }
-            if (Input.GetKey(KeyCode.D) && coolDownTimer == 0)
-            {
-                //character.isMoving = true;
-                character.Move(3);
-                coolDownTimer = coolDown;
-            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+                isInteracting = true;
+            else if (!Input.GetKeyDown(KeyCode.Space))
+                isInteracting = false;
+        }
+        else if (isInteracting)
+        { 
+            if (Input.GetKeyDown(KeyCode.Space)) 
+                isInteracting = false;
+                //else if (!Input.GetKeyDown(KeyCode.Space))
+                    
+                //alreadyInteracting = true;
+                //Debug.Log(isInteracting + " -> this should be false..");
         }
 
-        if(!isTalking)
-                if (Input.GetKeyDown(KeyCode.Space))
-                    isInteracting = true;
-                else
-                    isInteracting = false;
-        else if (isTalking)
-        {
-            Debug.Log("Is talking");
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                npc.EndConversation();
-            }
-        }
+        //Debug.Log(isInteracting);
     }
 }

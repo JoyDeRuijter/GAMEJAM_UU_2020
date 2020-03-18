@@ -17,6 +17,7 @@ public class Object : MonoBehaviour
     private Entity entity;
 
     private bool isGenerated;
+    private bool interactedWith;
    
     void Start()
     {
@@ -49,18 +50,66 @@ public class Object : MonoBehaviour
            tile.IdTile(this.entity.currentPosition.X, this.entity.currentPosition.Y, 3);            //Het liefst doen we deze in de Generate-methode, maar dat leidt tot een NullReference error.
        }
        
-       if (player.interactTarget == "obj" && player.isInteracting)
-           if (player.interactPosition.X == this.entity.currentPosition.X && player.interactPosition.Y == this.entity.currentPosition.Y)
-               Interacted(OBJ_ID);
+       if (player.interactTarget == "obj")    //    If player is facing an object..
+       {
+           if (player.interactPosition.X == this.entity.currentPosition.X &&
+               player.interactPosition.Y == this.entity.currentPosition.Y)    //    And that object is this.object...
+           {
+               Debug.Log("Object's interactionhandler is called");
+               InteractionHandler(OBJ_ID);            //    start handling interaction
+           }
+       }
     }
 
-    public void Interacted(int id) //    TODO:    Make them face the player when interacted with
+    public void InteractionHandler(int id)
     {
-        if (id != 0)
+        /*if (id != 0)
             id = 0;
         dialogue.Object(id);
 
         EventController.ObjectFound(OBJ_ID);
+        *////
+        ////
+        
+        if (player.isInteracting)
+        {
+            //DINGEN DIE HIJ EEN KEER DOET TIJDENS INTERACTION
+            if (!interactedWith)
+                EngageInteraction(OBJ_ID);        
+            
+            //DINGEN DIE HIJ CONTINU DOET TIJDENS INTERACTION
+        }
+        if (!player.isInteracting && interactedWith)
+            EndInteraction();
+    }
+
+    void EngageInteraction(int objID)
+    {
+        interactedWith = true;
+        
+        Debug.Log("Object interaction works");
+
+        if (objID != 0)
+        {
+            EventController.ObjectFound(OBJ_ID);
+            FindObjectOfType<DialogueController>().Object(objID);
+        }
+        else
+        {
+            player.isInteracting = false;
+        }
+
+        if (GetComponent<QuestGiver>() != null)
+            GetComponent<QuestGiver>().GiveQuest();
+    }
+
+    void EndInteraction()
+    {
+        Debug.Log("Ending interaction");
+        interactedWith = false;
+        //Close window here
+        Debug.Log("Closing interaction window");
+        FindObjectOfType<DialogueController>().clearLine();
     }
 
 }

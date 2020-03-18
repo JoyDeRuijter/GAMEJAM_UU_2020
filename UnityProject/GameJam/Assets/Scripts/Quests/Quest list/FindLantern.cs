@@ -10,7 +10,7 @@ public class FindLantern : Quest
         questName = "Find Lantern";
         description = "Just a simple task to test your basic human knowledge";
         //skillRewards = FindObjectOfType<GameManager>().scoreFriends;
-        goal = new FindGoal(1, this);
+        goal = new FindGoal(1, 1, this);
         
         //EventController.NpcInteracted(0);
     }

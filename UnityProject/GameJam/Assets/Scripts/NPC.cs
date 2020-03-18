@@ -54,56 +54,80 @@ public class NPC : MonoBehaviour
         if (moveTimer == 0)
         {
             RandomMovement();
-            moveTimer = Random.Range(300,600);
+            moveTimer = Random.Range(300, 600);
         }
-        
-        if (!isTalking)
+
+        /*if (!isTalking)
         {
             FindObjectOfType<DialogueController>().clearLine();
-        }
-        
-        
+        }*/
+
+
         npcTile.IdTile(entity.currentPosition.X, entity.currentPosition.Y, 2);
-        
-        if (player.interactTarget == "npc" && player.isInteracting)
+
+        if (player.interactTarget == "npc")    //    If player is facing an npc..
         {
-            if (player.interactPosition.X == this.entity.currentPosition.X && player.interactPosition.Y == this.entity.currentPosition.Y)
+            if (player.interactPosition.X == this.entity.currentPosition.X &&
+                player.interactPosition.Y == this.entity.currentPosition.Y)    //    And that npc is this.npc...
             {
-                Interacted(NPC_ID);
+                InteractionHandler(NPC_ID);            //    start handling interaction
             }
         }
     }
 
-    public void Interacted(int npcID)                    //    TODO:    Make them face the player when interacted with!!
+    public void InteractionHandler(int npcID)                    //    TODO:    Make them face the player when interacted with!!
     {
-        EventController.NpcInteracted(NPC_ID);
-        
-        FindObjectOfType<DialogueController>().NPC(npcID);
-        EngageConversation();
-        
-        
-        if (GetComponent<QuestGiver>() != null)
-            GetComponent<QuestGiver>().GiveQuest();
+        //EventController.NpcInteracted(NPC_ID);
+        //FindObjectOfType<DialogueController>().NPC(npcID);
 
-        FindObjectOfType<GameManager>().scoreFriends += 10;
-        moveTimer = Random.Range(600, 1200);
-        this.character.Direction = player.character.Direction + 2;
-            if (this.character.Direction >= 4) //If the player looks up (dir=2), the npc will look down ((npc.dir=4)-4 = 0). 
+        if (player.isInteracting)
+        {
+            //DINGEN DIE HIJ EEN KEER DOET TIJDENS INTERACTION
+            if (!isTalking)
+                EngageConversation(npcID);        
+            
+            //DINGEN DIE HIJ CONTINU DOET TIJDENS INTERACTION
+            moveTimer = Random.Range(600, 1200);
+            this.character.Direction = player.character.Direction + 2;
+            if (this.character.Direction >= 4)         //If the player looks up (dir=2), the npc will look down ((npc.dir=4)-4 = 0). 
                 this.character.Direction -= 4;
+        }
+        if (!player.isInteracting && isTalking)
+            EndConversation();
+        
     }
 
-    void EngageConversation()
+    void EngageConversation(int npcID)
     {
         isTalking = true;
-        player.isTalking = true;
-        Debug.Log(player.isTalking);
+
+        if (npcID != 0)
+        {
+            EventController.NpcInteracted(NPC_ID);
+            if (GetComponent<QuestGiver>() != null && !GetComponent<QuestGiver>().questGiven)
+            {
+                FindObjectOfType<DialogueController>().Quest(GetComponent<QuestGiver>().questName, 1);
+                GetComponent<QuestGiver>().GiveQuest();
+            }
+            else if (GetComponent<QuestGiver>() == null || GetComponent<QuestGiver>().questGiven)
+                FindObjectOfType<DialogueController>().NPC(npcID);
+
+            
+        }
+        else
+        {
+            player.isInteracting = false;
+        }
+
+        
+
     }
 
     public void EndConversation()
     {
         isTalking = false;
-        player.isTalking = false;
-        Debug.Log(player.isTalking);
+        //    Close window here
+        FindObjectOfType<DialogueController>().clearLine();
     }
     
     void RandomMovement()

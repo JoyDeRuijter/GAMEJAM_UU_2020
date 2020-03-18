@@ -48,6 +48,18 @@
           </e>
           <e p="Object" t="Include">
             <e p="Object_Description0.txt" t="Include" />
+            <e p="Object_Description1.txt" t="Include" />
+          </e>
+          <e p="Quest" t="Include">
+            <e p="FindLantern" t="Include">
+              <e p="FindLantern_Dialogue1.txt" t="Include" />
+            </e>
+            <e p="MeetPeopleQuest" t="Include">
+              <e p="MeetPeopleQuest_Dialogue1.txt" t="Include" />
+            </e>
+            <e p="TalkToNPC3" t="Include">
+              <e p="TalkToNPC3_Dialogue1.txt" t="Include" />
+            </e>
           </e>
         </e>
       </e>

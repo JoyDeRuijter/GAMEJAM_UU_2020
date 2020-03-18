@@ -20,9 +20,9 @@ public class FindGoal : Goal
         this.objID = objID;
     }
 
-    void ObjectFound(int npcID)
+    void ObjectFound(int objID)
     {
-        if (this.objID == npcID)
+        if (this.objID == objID || objID == 0)
         {
             Increment(1);
             if (this.completed)

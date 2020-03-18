@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class QuestGiver : MonoBehaviour
 {
-    [SerializeField] private string questName;
+    [SerializeField] public string questName;
     private QuestController questController;
     private Quest quest;
 
-    private bool questGiven;
+    public bool questGiven;
     // Start is called before the first frame update
     void Start()
     {

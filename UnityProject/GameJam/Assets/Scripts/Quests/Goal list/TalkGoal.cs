@@ -23,8 +23,6 @@ public class TalkGoal : Goal
 
    void NpcInteracted(int npcID)
    {
-      Debug.Log("This.npcID= " + this.npcID + " and npcID= " + npcID);
-      //Debug.Log("NPC has been interacted with");
       if (this.npcID == npcID || this.npcID == 0)
       {
          //Debug.Log("the npc interacted with, is the correct one?");
