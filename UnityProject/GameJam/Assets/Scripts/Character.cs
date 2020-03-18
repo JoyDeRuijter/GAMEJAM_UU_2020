@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
         grid = FindObjectOfType<Grid>();                // Grid is independant from the rest, but it's values and methods are still used
         entity = GetComponent<Entity>();
         
-        movingSpeed = 0.02F;
+        movingSpeed = 0.08F;
         
         Generate();
     }
