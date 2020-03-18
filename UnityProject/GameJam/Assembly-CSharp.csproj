@@ -62,16 +62,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Arrows.cs" />
     <Compile Include="Assets\Scripts\Building.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
     <Compile Include="Assets\Scripts\Controllers\DialogueController.cs" />
     <Compile Include="Assets\Scripts\Entity.cs" />
+    <Compile Include="Assets\Scripts\Goal.cs" />
     <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\NPC.cs" />
     <Compile Include="Assets\Scripts\Object.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Score.cs" />
+    <Compile Include="Assets\Scripts\Swiping.cs" />
     <Compile Include="Assets\Scripts\Tile.cs" />
+    <Compile Include="Assets\Scripts\Timer.cs" />
+    <Compile Include="Assets\Scripts\WinLose.cs" />
     <None Include="Assets\Text\NPC\NPC_Dialogue2.txt" />
     <None Include="Assets\Text\NPC\NPC_Dialogue3.txt" />
     <None Include="Assets\Text\NPC\NPC_Dialogue0.txt" />
