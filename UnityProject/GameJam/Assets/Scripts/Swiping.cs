@@ -7,6 +7,7 @@ public class Swiping : MonoBehaviour
 {
     private Score score;
     public Arrows arrow;
+    public WinLose winLose;
     public bool isHighlightedL;
     public bool isHighlightedR;
 
@@ -18,11 +19,10 @@ public class Swiping : MonoBehaviour
 
     void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && winLose.isPlaying == true)
         {
             if (arrow.isLeft == true)
             {
-                //HighlightLeft();
                 arrow.isLeft = false;
                 score.score += 1;
                 arrow.GenerateNumber();
@@ -35,11 +35,10 @@ public class Swiping : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) && winLose.isPlaying == true)
         {
             if (arrow.isRight == true)
             {
-                //HighlightRight();
                 arrow.isRight = false;
                 score.score += 1;
                 arrow.GenerateNumber();

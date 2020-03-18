@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
         timer.text = "Time left: " + (int)timeLeft + " seconds";
 
         timeLeft -= Time.deltaTime;
-        if (timeLeft < 0)
+        if (timeLeft <= 0)
         {
             timeLeft = 0;
             timeUp = true;
