@@ -14,29 +14,10 @@
             <e p="DialogueController.cs" t="Include" />
           </e>
           <e p="Entity.cs" t="Include" />
-          <e p="GameManager.cs" t="Include" />
           <e p="Grid.cs" t="Include" />
           <e p="NPC.cs" t="Include" />
           <e p="Object.cs" t="Include" />
           <e p="Player.cs" t="Include" />
-          <e p="Quests" t="Include">
-            <e p="EventController.cs" t="Include" />
-            <e p="Goal list" t="Include">
-              <e p="FindGoal.cs" t="Include" />
-              <e p="TalkGoal.cs" t="Include" />
-            </e>
-            <e p="Goal.cs" t="Include" />
-            <e p="Quest list" t="Include">
-              <e p="FindLantern.cs" t="Include" />
-              <e p="MeetPeopleQuest.cs" t="Include" />
-              <e p="TalkToNPC3.cs" t="Include" />
-            </e>
-            <e p="Quest.cs" t="Include" />
-            <e p="QuestController.cs" t="Include" />
-            <e p="QuestDatabase.cs" t="Include" />
-            <e p="QuestGiver.cs" t="Include" />
-            <e p="QuestUIItem.cs" t="Include" />
-          </e>
           <e p="Tile.cs" t="Include" />
         </e>
         <e p="Text" t="Include">
@@ -48,18 +29,6 @@
           </e>
           <e p="Object" t="Include">
             <e p="Object_Description0.txt" t="Include" />
-            <e p="Object_Description1.txt" t="Include" />
-          </e>
-          <e p="Quest" t="Include">
-            <e p="FindLantern" t="Include">
-              <e p="FindLantern_Dialogue1.txt" t="Include" />
-            </e>
-            <e p="MeetPeopleQuest" t="Include">
-              <e p="MeetPeopleQuest_Dialogue1.txt" t="Include" />
-            </e>
-            <e p="TalkToNPC3" t="Include">
-              <e p="TalkToNPC3_Dialogue1.txt" t="Include" />
-            </e>
           </e>
         </e>
       </e>
